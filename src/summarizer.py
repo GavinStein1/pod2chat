@@ -560,6 +560,7 @@ class Summarizer:
         if len(batch_results) == 1:
             return batch_results[0]
         
+        # TODO: implement other merge strategies
         if strategy == "combine":
             # Simply combine all results
             return "\n\n".join(batch_results)

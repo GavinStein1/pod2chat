@@ -10,11 +10,13 @@ from __future__ import annotations
 import json
 import os
 import time
+import math
 from collections import deque
 from typing import List, Dict, Any, Optional
 from openai import OpenAI
 from openai import BadRequestError
 from chunk import format_ts, simple_token_count
+from embedder import Embedder
 from prompts import (
     TOPIC_EXTRACTION_SYSTEM_MESSAGE,
     TOPIC_EXTRACTION_BASE_PROMPT,
@@ -24,6 +26,8 @@ from prompts import (
     DEEP_DIVE_BASE_PROMPT_TEMPLATE,
     FRAMEWORK_EXTRACTION_SYSTEM_MESSAGE,
     FRAMEWORK_EXTRACTION_BASE_PROMPT,
+    HIERARCHICAL_MERGE_SYSTEM_MESSAGE,
+    HIERARCHICAL_MERGE_BASE_PROMPT,
 )
 
 # Try to import tiktoken for accurate token counting
@@ -560,24 +564,132 @@ class Summarizer:
         if len(batch_results) == 1:
             return batch_results[0]
         
-        # TODO: implement other merge strategies
         if strategy == "combine":
             # Simply combine all results
             return "\n\n".join(batch_results)
         
         elif strategy == "hierarchical":
-            # Combine, then summarise to remove redundancy
-            combined = "\n\n".join(batch_results)
-            # For now, just combine (could add re-summarisation step)
-            return combined
+            # Combine, then re-summarise to remove redundancy
+            try:
+                combined = "\n\n".join(batch_results)
+                
+                messages = [
+                    {"role": "system", "content": HIERARCHICAL_MERGE_SYSTEM_MESSAGE},
+                    {"role": "user", "content": HIERARCHICAL_MERGE_BASE_PROMPT.format(combined_summaries=combined)},
+                ]
+                
+                # Rate limiting: estimate tokens and wait if needed
+                estimated_tokens = self._count_message_tokens(messages)
+                self._wait_if_needed(estimated_tokens)
+                
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                )
+                
+                # Record actual token usage
+                if hasattr(response, 'usage') and response.usage:
+                    input_tokens = getattr(response.usage, 'prompt_tokens', estimated_tokens)
+                    output_tokens = getattr(response.usage, 'completion_tokens', 0)
+                else:
+                    input_tokens = estimated_tokens
+                    output_tokens = 0
+                
+                self._record_request(input_tokens, output_tokens)
+                
+                return response.choices[0].message.content.strip()
+            except Exception as e:
+                print(f"    Warning: Hierarchical merge failed: {e}, falling back to combine")
+                # Fallback to combine on error
+                return "\n\n".join(batch_results)
         
         elif strategy == "selective":
-            # Keep only unique content (simplified - just combine for now)
-            return "\n\n".join(batch_results)
+            # Keep only unique content using semantic similarity
+            try:
+                # Split each batch result into logical sections (paragraphs)
+                sections = []
+                for batch_idx, batch_result in enumerate(batch_results):
+                    # Split by double newlines to get paragraphs/sections
+                    batch_sections = [s.strip() for s in batch_result.split("\n\n") if s.strip()]
+                    sections.extend([(batch_idx, i, section) for i, section in enumerate(batch_sections)])
+                
+                if not sections:
+                    return "\n\n".join(batch_results)
+                
+                if len(sections) == 1:
+                    return sections[0][2]
+                
+                # Generate embeddings for each section
+                embedder = Embedder(api_key=os.getenv("OPENAI_API_KEY"))
+                section_texts = [section[2] for section in sections]
+                
+                # Generate embeddings in batches (embedder handles this)
+                embeddings = []
+                for text in section_texts:
+                    try:
+                        embedding = embedder.embed_text(text)
+                        embeddings.append(embedding)
+                    except Exception as e:
+                        print(f"    Warning: Embedding generation failed for section: {e}")
+                        # Use empty embedding as fallback
+                        embeddings.append([])
+                
+                # Calculate cosine similarity and filter duplicates
+                unique_sections = []
+                unique_indices = []  # Track indices of kept sections for embedding comparison
+                similarity_threshold = 0.85
+                
+                for i, (batch_idx, sec_idx, section_text) in enumerate(sections):
+                    if not embeddings[i]:  # Skip similarity check if embedding failed
+                        unique_sections.append(section_text)
+                        unique_indices.append(i)
+                        continue
+                    
+                    # Check similarity against all previously kept sections
+                    is_duplicate = False
+                    for kept_idx in unique_indices:
+                        if embeddings[kept_idx]:
+                            similarity = self._cosine_similarity(embeddings[i], embeddings[kept_idx])
+                            if similarity > similarity_threshold:
+                                is_duplicate = True
+                                break
+                    
+                    if not is_duplicate:
+                        unique_sections.append(section_text)
+                        unique_indices.append(i)
+                
+                return "\n\n".join(unique_sections) if unique_sections else "\n\n".join(batch_results)
+            except Exception as e:
+                print(f"    Warning: Selective merge failed: {e}, falling back to combine")
+                # Fallback to combine on error
+                return "\n\n".join(batch_results)
         
         else:
             # Default to combine
             return "\n\n".join(batch_results)
+    
+    def _cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        """
+        Calculate cosine similarity between two vectors.
+        
+        Args:
+            vec1: First vector
+            vec2: Second vector
+            
+        Returns:
+            Cosine similarity value between -1 and 1
+        """
+        if not vec1 or not vec2 or len(vec1) != len(vec2):
+            return 0.0
+        
+        dot_product = sum(a * b for a, b in zip(vec1, vec2))
+        magnitude1 = math.sqrt(sum(a * a for a in vec1))
+        magnitude2 = math.sqrt(sum(a * a for a in vec2))
+        
+        if magnitude1 == 0 or magnitude2 == 0:
+            return 0.0
+        
+        return dot_product / (magnitude1 * magnitude2)
 
     def _extract_topics(self, coarse_chunks: List[Dict[str, Any]]) -> List[str]:
         """Pass 1: Extract main topics/themes from coarse chunks."""
@@ -642,7 +754,7 @@ class Summarizer:
                 result = self._summarize_with_batching(
                     selected_chunks, base_prompt, 
                     TOPIC_EXTRACTION_SYSTEM_MESSAGE,
-                    merge_strategy="combine",
+                    merge_strategy="selective",
                     # temperature=0.3,
                 )
                 # Extract topics from batched result
@@ -737,7 +849,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                     selected_chunks, 
                     base_prompt, 
                     system_message, 
-                    merge_strategy="combine", 
+                    merge_strategy="hierarchical", 
                     # temperature=0.4
                 )
             
@@ -752,7 +864,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                         selected_chunks, 
                         base_prompt, 
                         system_message,
-                        merge_strategy="combine", 
+                        merge_strategy="hierarchical", 
                         # temperature=0.4
                     )
                     synopsis = self._verify_timestamps(synopsis, raw_segments)
@@ -891,7 +1003,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                         selected_topic_chunks, 
                         base_prompt, 
                         system_message,
-                        merge_strategy="combine", 
+                        merge_strategy="selective", 
                         # temperature=0.4
                     )
                 
@@ -906,7 +1018,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                             selected_topic_chunks, 
                             base_prompt, 
                             system_message,
-                            merge_strategy="combine", 
+                            merge_strategy="selective", 
                             # temperature=0.4
                         )
                         topic_section = self._verify_timestamps(topic_section, raw_segments)
@@ -1044,7 +1156,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                     selected_framework_chunks, 
                     base_prompt, 
                     system_message,
-                    merge_strategy="combine", 
+                    merge_strategy="hierarchical", 
                     # temperature=0.3
                 )
             
@@ -1058,7 +1170,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                         selected_framework_chunks, 
                         base_prompt, 
                         system_message,
-                        merge_strategy="combine", 
+                        merge_strategy="hierarchical", 
                         # temperature=0.3
                     )
                     frameworks = self._verify_timestamps(frameworks, raw_segments)

@@ -224,3 +224,21 @@ Format as:
 ...
 
 Only extract frameworks that are clearly structured methods/processes in the transcript. Ensure steps are numbered sequentially and in logical order."""
+
+# ============================================================================
+# Merge Strategy Prompts
+# ============================================================================
+
+HIERARCHICAL_MERGE_SYSTEM_MESSAGE = """You are a content consolidation assistant that merges multiple summaries into a single coherent summary, removing redundancy whilst preserving all key information."""
+
+HIERARCHICAL_MERGE_BASE_PROMPT = """The following content contains multiple batch summaries that may have overlapping or redundant information. 
+Please merge these into a single, coherent summary that:
+- Removes redundancy and duplicates
+- Preserves all important information
+- Maintains the original structure and formatting (markdown, timestamps, etc.)
+- Keeps all timestamps [HH:MM:SS] intact
+
+Batch summaries to merge:
+{combined_summaries}
+
+Provide the merged summary:"""

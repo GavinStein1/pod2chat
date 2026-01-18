@@ -1,0 +1,996 @@
+{"start": 0.12, "text": "my sister is getting married so let's", "duration": 3.039, "end": 3.1590000000000003}
+{"start": 1.719, "text": "build her a website that's going to", "duration": 2.681, "end": 4.4}
+{"start": 3.159, "text": "showcase the information about the", "duration": 3.76, "end": 6.919}
+{"start": 4.4, "text": "wedding and allow people to RSVP now", "duration": 4.64, "end": 9.04}
+{"start": 6.919, "text": "while this example is actually quite", "duration": 4.521, "end": 11.44}
+{"start": 9.04, "text": "simple the same tools and process that", "duration": 3.96, "end": 13.0}
+{"start": 11.44, "text": "I'm going to show you in this video are", "duration": 3.319, "end": 14.759}
+{"start": 13.0, "text": "the same ones that professional web", "duration": 4.48, "end": 17.48}
+{"start": 14.759, "text": "designers use to build complex websites", "duration": 4.481, "end": 19.240000000000002}
+{"start": 17.48, "text": "website that they chart four and five", "duration": 3.799, "end": 21.279}
+{"start": 19.24, "text": "figures for these days the amount of", "duration": 4.68, "end": 23.919999999999998}
+{"start": 21.279, "text": "tools to build websites is overwhelming", "duration": 3.881, "end": 25.16}
+{"start": 23.92, "text": "and some of these tools are actually", "duration": 3.24, "end": 27.160000000000004}
+{"start": 25.16, "text": "quite easy to learn tools like Wix and", "duration": 4.199, "end": 29.359}
+{"start": 27.16, "text": "Squarespace however they are easy to", "duration": 3.959, "end": 31.119}
+{"start": 29.359, "text": "learn because they make the process a", "duration": 3.761, "end": 33.120000000000005}
+{"start": 31.119, "text": "little bit too simplistic and that", "duration": 4.481, "end": 35.6}
+{"start": 33.12, "text": "leaves you with a generic website", "duration": 4.08, "end": 37.199999999999996}
+{"start": 35.6, "text": "definitely not something that you can", "duration": 4.2, "end": 39.800000000000004}
+{"start": 37.2, "text": "use on complex interesting projects the", "duration": 4.24, "end": 41.440000000000005}
+{"start": 39.8, "text": "tools that I'm going to be using in this", "duration": 4.079, "end": 43.879}
+{"start": 41.44, "text": "video are reloom which will use to plan", "duration": 4.72, "end": 46.16}
+{"start": 43.879, "text": "out the content turn it into wireframe", "duration": 4.2, "end": 48.079}
+{"start": 46.16, "text": "and even select the look and feel for", "duration": 4.039, "end": 50.199}
+{"start": 48.079, "text": "the website then we're going to export", "duration": 4.201, "end": 52.28}
+{"start": 50.199, "text": "this into webflow where we will build", "duration": 4.321, "end": 54.519999999999996}
+{"start": 52.28, "text": "all of the additional functionality add", "duration": 4.2, "end": 56.480000000000004}
+{"start": 54.52, "text": "interactions make sure the website is", "duration": 3.999, "end": 58.519000000000005}
+{"start": 56.48, "text": "responsive and publish the website now", "duration": 4.36, "end": 60.839999999999996}
+{"start": 58.519, "text": "some of you might mention that also has", "duration": 4.68, "end": 63.199}
+{"start": 60.84, "text": "their own AI side Builder and if we're", "duration": 3.92, "end": 64.76}
+{"start": 63.199, "text": "just going to get started in weow that's", "duration": 4.441, "end": 67.64}
+{"start": 64.76, "text": "going to be easier and it is however", "duration": 4.28, "end": 69.04}
+{"start": 67.64, "text": "just like I said about Wix and", "duration": 3.519, "end": 71.159}
+{"start": 69.04, "text": "Squarespace I feel like we're going to", "duration": 5.56, "end": 74.60000000000001}
+{"start": 71.159, "text": "end up with a two shallow of a template", "duration": 6.241, "end": 77.4}
+{"start": 74.6, "text": "now I personally think that using reum", "duration": 5.199, "end": 79.79899999999999}
+{"start": 77.4, "text": "to plan out the content and wireframing", "duration": 5.16, "end": 82.56}
+{"start": 79.799, "text": "is a crucial step and that's actually", "duration": 5.521, "end": 85.32000000000001}
+{"start": 82.56, "text": "what's going to separate amateurs from", "duration": 5.04, "end": 87.60000000000001}
+{"start": 85.32, "text": "professionals so let's build websites", "duration": 4.04, "end": 89.36}
+{"start": 87.6, "text": "the right way it's going to be super fun", "duration": 4.32, "end": 91.91999999999999}
+{"start": 89.36, "text": "let's do it", "duration": 2.56, "end": 91.92}
+{"start": 92.84, "text": "so I've got a new reloom project and I'm", "duration": 3.76, "end": 96.60000000000001}
+{"start": 94.799, "text": "starting from the sitemap you can see", "duration": 3.6, "end": 98.399}
+{"start": 96.6, "text": "here at the top then we'll be moving to", "duration": 4.799, "end": 101.399}
+{"start": 98.399, "text": "wireframes and a style guide a sitemap", "duration": 5.36, "end": 103.759}
+{"start": 101.399, "text": "is basically the structure of a website", "duration": 4.481, "end": 105.88}
+{"start": 103.759, "text": "what pages you want and what kind of", "duration": 3.761, "end": 107.52}
+{"start": 105.88, "text": "content sections you're going to have on", "duration": 3.199, "end": 109.079}
+{"start": 107.52, "text": "the website you can think about this", "duration": 3.599, "end": 111.119}
+{"start": 109.079, "text": "like an architectural plan of the", "duration": 5.201, "end": 114.27999999999999}
+{"start": 111.119, "text": "website now if I know already how many", "duration": 4.881, "end": 116.0}
+{"start": 114.28, "text": "pages and what I want to have I can go", "duration": 4.199, "end": 118.479}
+{"start": 116.0, "text": "ahead and manually create it however if", "duration": 4.119, "end": 120.119}
+{"start": 118.479, "text": "I'm not sure and I want some help then", "duration": 4.6, "end": 123.079}
+{"start": 120.119, "text": "reim has this AI sitap Creator to help", "duration": 5.0, "end": 125.119}
+{"start": 123.079, "text": "me think through the content of this", "duration": 4.241, "end": 127.32}
+{"start": 125.119, "text": "website so I can put here a prompt in", "duration": 4.36, "end": 129.479}
+{"start": 127.32, "text": "this case let's try invitation to miky", "duration": 4.68, "end": 132.0}
+{"start": 129.479, "text": "and n's wedding including details about", "duration": 5.081, "end": 134.56}
+{"start": 132.0, "text": "the wedding location and RSVP I can't", "duration": 4.36, "end": 136.36}
+{"start": 134.56, "text": "actually specify just a single page so", "duration": 4.2, "end": 138.76}
+{"start": 136.36, "text": "it's 1 to five and then English and then", "duration": 4.879, "end": 141.239}
+{"start": 138.76, "text": "generate a sitemap so let's see what's", "duration": 4.08, "end": 142.84}
+{"start": 141.239, "text": "happening so you can see for the", "duration": 4.08, "end": 145.31900000000002}
+{"start": 142.84, "text": "homepage it already created the", "duration": 4.84, "end": 147.68}
+{"start": 145.319, "text": "different sections in what kind of", "duration": 4.841, "end": 150.16}
+{"start": 147.68, "text": "content we're going to have on each", "duration": 5.08, "end": 152.76000000000002}
+{"start": 150.16, "text": "section and then it also suggested", "duration": 4.48, "end": 154.64}
+{"start": 152.76, "text": "additional Pages wedding details", "duration": 5.64, "end": 158.39999999999998}
+{"start": 154.64, "text": "location RSVP now in this case maybe", "duration": 5.16, "end": 159.79999999999998}
+{"start": 158.4, "text": "that's good for the project that you're", "duration": 3.479, "end": 161.87900000000002}
+{"start": 159.8, "text": "working on I specifically want just a", "duration": 4.04, "end": 163.84}
+{"start": 161.879, "text": "single page with all of the information", "duration": 3.44, "end": 165.319}
+{"start": 163.84, "text": "so I'm going to go here and start", "duration": 4.24, "end": 168.08}
+{"start": 165.319, "text": "editing this I'm going to delete these", "duration": 5.321, "end": 170.64}
+{"start": 168.08, "text": "pages that I don't need just going to", "duration": 5.28, "end": 173.36}
+{"start": 170.64, "text": "click the three dots and then delete now", "duration": 5.12, "end": 175.76}
+{"start": 173.36, "text": "for the sections let's go through this", "duration": 4.959, "end": 178.31900000000002}
+{"start": 175.76, "text": "and there's a little bit of a", "duration": 6.44, "end": 182.2}
+{"start": 178.319, "text": "specifically re is built for you know", "duration": 6.081, "end": 184.39999999999998}
+{"start": 182.2, "text": "business websit so in this case you can", "duration": 4.119, "end": 186.319}
+{"start": 184.4, "text": "see by the name of the sections like", "duration": 4.399, "end": 188.799}
+{"start": 186.319, "text": "features list and testimonials I'm not", "duration": 4.521, "end": 190.83999999999997}
+{"start": 188.799, "text": "sure it would necessarily make sense for", "duration": 5.041, "end": 193.84}
+{"start": 190.84, "text": "a wedding website but I might edit this", "duration": 4.959, "end": 195.799}
+{"start": 193.84, "text": "so let's see what it suggested and then", "duration": 4.0, "end": 197.84}
+{"start": 195.799, "text": "what kind of changes we want to do so", "duration": 4.401, "end": 200.20000000000002}
+{"start": 197.84, "text": "navbar navigation at the top and footer", "duration": 3.959, "end": 201.799}
+{"start": 200.2, "text": "at the bottom this is the basic", "duration": 4.039, "end": 204.23899999999998}
+{"start": 201.799, "text": "structure of any website so that's we're", "duration": 4.201, "end": 206.0}
+{"start": 204.239, "text": "always going to have that and then a", "duration": 3.761, "end": 208.0}
+{"start": 206.0, "text": "hero section hero is always the section", "duration": 4.12, "end": 210.12}
+{"start": 208.0, "text": "at the top this one is a welcome message", "duration": 3.879, "end": 211.879}
+{"start": 210.12, "text": "and introduction to mik and n's wedding", "duration": 3.319, "end": 213.439}
+{"start": 211.879, "text": "with a beautiful image of the couple", "duration": 3.761, "end": 215.64}
+{"start": 213.439, "text": "that's actually sounds pretty cool and", "duration": 4.481, "end": 217.92}
+{"start": 215.64, "text": "then featur list section three key", "duration": 5.64, "end": 221.27999999999997}
+{"start": 217.92, "text": "highlights wedding dates time venue RSVP", "duration": 5.8, "end": 223.72}
+{"start": 221.28, "text": "instruction that's also sounds pretty", "duration": 5.12, "end": 226.4}
+{"start": 223.72, "text": "good testimonial section quotes from", "duration": 4.4, "end": 228.12}
+{"start": 226.4, "text": "friends and family expressing their joy", "duration": 4.32, "end": 230.72}
+{"start": 228.12, "text": "and excitement for the couple maybe I", "duration": 5.759, "end": 233.87900000000002}
+{"start": 230.72, "text": "mean I specifically don't want this but", "duration": 4.799, "end": 235.519}
+{"start": 233.879, "text": "that could be a good idea so I'm just", "duration": 4.0, "end": 237.879}
+{"start": 235.519, "text": "going to select this and hit backspace", "duration": 3.961, "end": 239.48000000000002}
+{"start": 237.879, "text": "just to delete it of course I can also", "duration": 3.841, "end": 241.72}
+{"start": 239.48, "text": "write click and delete let's see what is", "duration": 4.759, "end": 244.23899999999998}
+{"start": 241.72, "text": "this Services section information about", "duration": 4.04, "end": 245.76}
+{"start": 244.239, "text": "wedding related services such as", "duration": 3.0, "end": 247.239}
+{"start": 245.76, "text": "catering photography and music", "duration": 3.399, "end": 249.159}
+{"start": 247.239, "text": "definitely do not need this I'm going to", "duration": 4.72, "end": 251.959}
+{"start": 249.159, "text": "hit backspace to delete this call to", "duration": 4.92, "end": 254.07899999999998}
+{"start": 251.959, "text": "action CTA stands for call to action B", "duration": 4.041, "end": 256.0}
+{"start": 254.079, "text": "basically what do we want people to do", "duration": 3.801, "end": 257.88}
+{"start": 256.0, "text": "encourage visitors to RSVP for the", "duration": 3.56, "end": 259.56}
+{"start": 257.88, "text": "wedding this is exactly what I want", "duration": 4.039, "end": 261.919}
+{"start": 259.56, "text": "although I do want this to be at the end", "duration": 4.28, "end": 263.84}
+{"start": 261.919, "text": "because you know usually people read", "duration": 3.321, "end": 265.24}
+{"start": 263.84, "text": "through a website then they get to the", "duration": 2.919, "end": 266.75899999999996}
+{"start": 265.24, "text": "end and choose what they want to do so", "duration": 4.0, "end": 269.24}
+{"start": 266.759, "text": "I'm going to click and drag this to the", "duration": 3.801, "end": 270.56}
+{"start": 269.24, "text": "bottom of the the page where I want", "duration": 3.399, "end": 272.639}
+{"start": 270.56, "text": "people to do this FAQ section common", "duration": 4.52, "end": 275.08}
+{"start": 272.639, "text": "questions about the wedding no I don't", "duration": 5.201, "end": 277.84000000000003}
+{"start": 275.08, "text": "want this about section background story", "duration": 4.36, "end": 279.44}
+{"start": 277.84, "text": "of how Mickey and no met in their", "duration": 3.04, "end": 280.88}
+{"start": 279.44, "text": "journey to together that's actually", "duration": 4.92, "end": 284.36}
+{"start": 280.88, "text": "sounds pretty cool uh specifically I'm", "duration": 6.039, "end": 286.919}
+{"start": 284.36, "text": "not sure yeah you know what why not", "duration": 4.16, "end": 288.52000000000004}
+{"start": 286.919, "text": "let's just put this as the second one so", "duration": 3.521, "end": 290.44}
+{"start": 288.52, "text": "we've got a welcome then we'll have the", "duration": 4.48, "end": 293.0}
+{"start": 290.44, "text": "background story then we'll have the key", "duration": 5.84, "end": 296.28}
+{"start": 293.0, "text": "highlights I also want another section I", "duration": 5.199, "end": 298.199}
+{"start": 296.28, "text": "do want a gallery with some photos so", "duration": 4.4, "end": 300.67999999999995}
+{"start": 298.199, "text": "I'm G to hit the plus here between them", "duration": 4.241, "end": 302.44}
+{"start": 300.68, "text": "and then I'm going to have all of the", "duration": 4.12, "end": 304.8}
+{"start": 302.44, "text": "different section options that I can add", "duration": 4.0, "end": 306.44}
+{"start": 304.8, "text": "here and I'm going to scroll through", "duration": 3.48, "end": 308.28000000000003}
+{"start": 306.44, "text": "this we've got a lot of types of", "duration": 3.56, "end": 310.0}
+{"start": 308.28, "text": "contents here and I'm going to choose", "duration": 3.919, "end": 312.19899999999996}
+{"start": 310.0, "text": "Gallery so Gallery display gallery of", "duration": 4.56, "end": 314.56}
+{"start": 312.199, "text": "image relating to the provided or", "duration": 5.28, "end": 317.479}
+{"start": 314.56, "text": "service uh let's just say", "duration": 7.72, "end": 322.28000000000003}
+{"start": 317.479, "text": "images of Mickey and Noom and uh maybe", "duration": 6.761, "end": 324.24}
+{"start": 322.28, "text": "another section just about the location", "duration": 3.8, "end": 326.08}
+{"start": 324.24, "text": "how to get there maybe like a map or", "duration": 3.12, "end": 327.36}
+{"start": 326.08, "text": "something like this I'm going to hit the", "duration": 4.52, "end": 330.59999999999997}
+{"start": 327.36, "text": "plus again and um there's actually", "duration": 6.52, "end": 333.88}
+{"start": 330.6, "text": "nothing here with location if I remember", "duration": 5.28, "end": 335.88}
+{"start": 333.88, "text": "correctly but maybe in the contact a lot", "duration": 4.36, "end": 338.24}
+{"start": 335.88, "text": "of time in contact there's like maps and", "duration": 3.84, "end": 339.71999999999997}
+{"start": 338.24, "text": "stuff like this so I'm just going to hit", "duration": 3.72, "end": 341.96000000000004}
+{"start": 339.72, "text": "the contact I'm going to write here", "duration": 7.84, "end": 347.56}
+{"start": 341.96, "text": "about the location and then how to get", "duration": 8.84, "end": 350.79999999999995}
+{"start": 347.56, "text": "there okay I think I'm happy with this", "duration": 6.199, "end": 353.759}
+{"start": 350.8, "text": "structure of the page now if I was", "duration": 5.2, "end": 356.0}
+{"start": 353.759, "text": "working on a client project I might want", "duration": 4.521, "end": 358.28000000000003}
+{"start": 356.0, "text": "to share this with them so to get", "duration": 4.639, "end": 360.639}
+{"start": 358.28, "text": "feedback hey are you happy with this is", "duration": 3.4, "end": 361.67999999999995}
+{"start": 360.639, "text": "going to be the structure of the", "duration": 3.12, "end": 363.759}
+{"start": 361.68, "text": "homepage or other pages I can do this by", "duration": 3.519, "end": 365.199}
+{"start": 363.759, "text": "clicking the share here and then sharing", "duration": 3.28, "end": 367.039}
+{"start": 365.199, "text": "a link with them and they'll be able to", "duration": 3.641, "end": 368.84000000000003}
+{"start": 367.039, "text": "comment and we can have a discussion", "duration": 4.081, "end": 371.12}
+{"start": 368.84, "text": "right now I'm working on this on my own", "duration": 4.4, "end": 373.23999999999995}
+{"start": 371.12, "text": "so no problem I can go ahead and move", "duration": 5.0, "end": 376.12}
+{"start": 373.24, "text": "into the next step the", "duration": 4.679, "end": 377.919}
+{"start": 376.12, "text": "wireframing so I'm going to click the", "duration": 3.72, "end": 379.84000000000003}
+{"start": 377.919, "text": "wireframe here and I'm going to move", "duration": 4.72, "end": 382.639}
+{"start": 379.84, "text": "into the next step now wireframing is", "duration": 5.04, "end": 384.88}
+{"start": 382.639, "text": "what we called a low Fidelity design", "duration": 3.881, "end": 386.52}
+{"start": 384.88, "text": "what does that mean it means that this", "duration": 3.719, "end": 388.599}
+{"start": 386.52, "text": "is a design without colors without", "duration": 4.28, "end": 390.79999999999995}
+{"start": 388.599, "text": "images just for us to understand what", "duration": 5.0, "end": 393.599}
+{"start": 390.8, "text": "kind of content and layouts we have and", "duration": 5.0, "end": 395.8}
+{"start": 393.599, "text": "take a look at the text and as you can", "duration": 5.641, "end": 399.24}
+{"start": 395.8, "text": "see real has already gave us suggestions", "duration": 5.799, "end": 401.599}
+{"start": 399.24, "text": "in terms of what layout to use for", "duration": 4.48, "end": 403.72}
+{"start": 401.599, "text": "example here we have a text left Aline", "duration": 4.241, "end": 405.84}
+{"start": 403.72, "text": "on an image here we've got text on the", "duration": 4.0, "end": 407.72}
+{"start": 405.84, "text": "left and an image on the right it also", "duration": 4.04, "end": 409.88}
+{"start": 407.72, "text": "wrote a copy for us now of course we can", "duration": 4.319, "end": 412.03900000000004}
+{"start": 409.88, "text": "doubleclick this and we can uh change", "duration": 4.319, "end": 414.199}
+{"start": 412.039, "text": "the text if it doesn't work for us but", "duration": 5.28, "end": 417.31899999999996}
+{"start": 414.199, "text": "it already gave us a really you know a", "duration": 5.56, "end": 419.759}
+{"start": 417.319, "text": "great place to start with and this saves", "duration": 5.201, "end": 422.52000000000004}
+{"start": 419.759, "text": "so much time so it gave us the whole", "duration": 5.0, "end": 424.759}
+{"start": 422.52, "text": "page here and again this is just the", "duration": 4.679, "end": 427.19899999999996}
+{"start": 424.759, "text": "beginning now I can click each one of", "duration": 3.761, "end": 428.52000000000004}
+{"start": 427.199, "text": "these components for example the", "duration": 3.601, "end": 430.8}
+{"start": 428.52, "text": "navigation and you can see I have here", "duration": 4.76, "end": 433.28}
+{"start": 430.8, "text": "replace component so now real is going", "duration": 5.0, "end": 435.8}
+{"start": 433.28, "text": "to suggest me a lot of different layouts", "duration": 4.359, "end": 437.63899999999995}
+{"start": 435.8, "text": "and options for the text we can have the", "duration": 3.519, "end": 439.319}
+{"start": 437.639, "text": "logo in the center we can have the logo", "duration": 4.4, "end": 442.039}
+{"start": 439.319, "text": "on the left side we can have the uh you", "duration": 5.641, "end": 444.96000000000004}
+{"start": 442.039, "text": "know the navigation centered or it can", "duration": 4.641, "end": 446.68}
+{"start": 444.96, "text": "be right aligned actually I like this", "duration": 5.32, "end": 450.28}
+{"start": 446.68, "text": "one I like it when the navig ation is in", "duration": 6.04, "end": 452.72}
+{"start": 450.28, "text": "the center and then the logo on the left", "duration": 3.8, "end": 454.08}
+{"start": 452.72, "text": "logo we'll have to think about this", "duration": 4.039, "end": 456.759}
+{"start": 454.08, "text": "probably just write Micky and Noom um", "duration": 4.6, "end": 458.68}
+{"start": 456.759, "text": "menu here so let's double click this", "duration": 3.921, "end": 460.68}
+{"start": 458.68, "text": "this is going to be a button for RSVP", "duration": 3.56, "end": 462.24}
+{"start": 460.68, "text": "which is just going to scroll us down", "duration": 4.88, "end": 465.56}
+{"start": 462.24, "text": "the page where we can do the RSVP now", "duration": 4.56, "end": 466.8}
+{"start": 465.56, "text": "and this is going to be kind of like", "duration": 3.12, "end": 468.68}
+{"start": 466.8, "text": "internal scrolling so you can scroll", "duration": 5.239, "end": 472.039}
+{"start": 468.68, "text": "down maybe into the events uh event", "duration": 7.799, "end": 476.479}
+{"start": 472.039, "text": "details details uh maybe into the", "duration": 7.56, "end": 479.599}
+{"start": 476.479, "text": "location and uh actually maybe the first", "duration": 4.761, "end": 481.24}
+{"start": 479.599, "text": "one should be their story right we're", "duration": 3.44, "end": 483.039}
+{"start": 481.24, "text": "going to have their story so I'm just", "duration": 3.84, "end": 485.08}
+{"start": 483.039, "text": "going to grab this to be the first event", "duration": 4.12, "end": 487.159}
+{"start": 485.08, "text": "details location we don't need the last", "duration": 5.239, "end": 490.31899999999996}
+{"start": 487.159, "text": "one so I'm happy with this navigation", "duration": 6.88, "end": 494.039}
+{"start": 490.319, "text": "now let's look at this hero section now", "duration": 5.6, "end": 495.91900000000004}
+{"start": 494.039, "text": "we might be happy with this again I can", "duration": 4.201, "end": 498.24}
+{"start": 495.919, "text": "go ahead and play around with if I want", "duration": 4.84, "end": 500.75899999999996}
+{"start": 498.24, "text": "to have an image or a video maybe I want", "duration": 4.76, "end": 503.0}
+{"start": 500.759, "text": "a button or maybe I want the RSVP here", "duration": 3.88, "end": 504.639}
+{"start": 503.0, "text": "at the top I'm just going to replace", "duration": 3.12, "end": 506.12}
+{"start": 504.639, "text": "this component and let's play around", "duration": 4.921, "end": 509.56}
+{"start": 506.12, "text": "with this I do want something centered", "duration": 4.96, "end": 511.08}
+{"start": 509.56, "text": "align like this yeah I think a lot of", "duration": 3.12, "end": 512.68}
+{"start": 511.08, "text": "time in wedding invitation the text is", "duration": 3.439, "end": 514.519}
+{"start": 512.68, "text": "aligned in the center so I think this is", "duration": 3.96, "end": 516.64}
+{"start": 514.519, "text": "going to be a nice layout a big nice", "duration": 4.841, "end": 519.36}
+{"start": 516.64, "text": "image of them here um of course we can", "duration": 5.36, "end": 522.0}
+{"start": 519.36, "text": "go ahead and redo the text I can also", "duration": 5.039, "end": 524.399}
+{"start": 522.0, "text": "ask reloom to rewrite this shorter", "duration": 4.0, "end": 526.0}
+{"start": 524.399, "text": "longer whatever I want I'm not going to", "duration": 3.12, "end": 527.519}
+{"start": 526.0, "text": "bother about this because obviously you", "duration": 3.16, "end": 529.16}
+{"start": 527.519, "text": "can you understand how to do this on", "duration": 3.961, "end": 531.48}
+{"start": 529.16, "text": "your own um I don't need two buttons", "duration": 3.88, "end": 533.04}
+{"start": 531.48, "text": "here so I'm going to select the learn", "duration": 4.56, "end": 536.04}
+{"start": 533.04, "text": "more and let's just delete to learn more", "duration": 5.56, "end": 538.5999999999999}
+{"start": 536.04, "text": "yeah RSVP is enough although we do have", "duration": 4.799, "end": 540.8389999999999}
+{"start": 538.6, "text": "RSVP here here it's good to have another", "duration": 4.04, "end": 542.64}
+{"start": 540.839, "text": "one call to action yeah let's just drive", "duration": 5.44, "end": 546.2790000000001}
+{"start": 542.64, "text": "them to RSVP here our love story so this", "duration": 6.04, "end": 548.68}
+{"start": 546.279, "text": "is basically the story I guess I don't", "duration": 3.961, "end": 550.24}
+{"start": 548.68, "text": "think we need more buttons here so I'm", "duration": 4.04, "end": 552.7199999999999}
+{"start": 550.24, "text": "going to delete the buttons actually", "duration": 4.4, "end": 554.64}
+{"start": 552.72, "text": "just delete them and let's see what", "duration": 3.72, "end": 556.44}
+{"start": 554.64, "text": "other layouts we've have here for the", "duration": 3.759, "end": 558.399}
+{"start": 556.44, "text": "story maybe we have something a little", "duration": 4.959, "end": 561.399}
+{"start": 558.399, "text": "bit more interesting actually let's go", "duration": 4.761, "end": 563.16}
+{"start": 561.399, "text": "with something like", "duration": 4.081, "end": 565.48}
+{"start": 563.16, "text": "this because we're going to have an", "duration": 3.64, "end": 566.8}
+{"start": 565.48, "text": "image at the top we're going to have a", "duration": 3.12, "end": 568.6}
+{"start": 566.8, "text": "gallery below so maybe we don't need", "duration": 3.2, "end": 570.0}
+{"start": 568.6, "text": "that many images", "duration": 3.12, "end": 571.72}
+{"start": 570.0, "text": "okay so I'm happy with this I'm going to", "duration": 3.36, "end": 573.36}
+{"start": 571.72, "text": "delete the buttons don't need the", "duration": 4.48, "end": 576.2}
+{"start": 573.36, "text": "buttons so this section looks good now", "duration": 5.919, "end": 579.279}
+{"start": 576.2, "text": "this is the um this is actually the", "duration": 5.12, "end": 581.32}
+{"start": 579.279, "text": "event details right so I'm just going to", "duration": 6.721, "end": 586.0}
+{"start": 581.32, "text": "write here event details and um this is", "duration": 6.639, "end": 587.9590000000001}
+{"start": 586.0, "text": "going to be basically the date I'm just", "duration": 3.68, "end": 589.68}
+{"start": 587.959, "text": "going to write here the", "duration": 6.281, "end": 594.2399999999999}
+{"start": 589.68, "text": "date and this is going to be the", "duration": 6.719, "end": 596.399}
+{"start": 594.24, "text": "location and this is going to be dress", "duration": 4.24, "end": 598.48}
+{"start": 596.399, "text": "code because this is what I want right", "duration": 4.241, "end": 600.64}
+{"start": 598.48, "text": "we can rewrite the text of course later", "duration": 3.799, "end": 602.279}
+{"start": 600.64, "text": "on with more", "duration": 3.96, "end": 604.6}
+{"start": 602.279, "text": "information um actually I think it would", "duration": 4.161, "end": 606.4399999999999}
+{"start": 604.6, "text": "look good with a little bit of a longer", "duration": 4.52, "end": 609.12}
+{"start": 606.44, "text": "text so I can ask AI to write and then I", "duration": 6.0, "end": 612.44}
+{"start": 609.12, "text": "can do make longer right and let's see", "duration": 4.88, "end": 614.0}
+{"start": 612.44, "text": "yeah this looks better when it's a", "duration": 3.88, "end": 616.32}
+{"start": 614.0, "text": "paragraph that's like three lines I feel", "duration": 5.44, "end": 619.44}
+{"start": 616.32, "text": "it looks a little bit more robust this", "duration": 6.72, "end": 623.0400000000001}
+{"start": 619.44, "text": "way so let's replace all of", "duration": 7.639, "end": 627.0790000000001}
+{"start": 623.04, "text": "these and then ask AI to rewrite make it", "duration": 6.32, "end": 629.36}
+{"start": 627.079, "text": "longer I'm going to get rid of the", "duration": 5.361, "end": 632.4399999999999}
+{"start": 629.36, "text": "buttons because there is no learn more", "duration": 6.36, "end": 635.72}
+{"start": 632.44, "text": "here so just going to delete delete", "duration": 5.6, "end": 638.0400000000001}
+{"start": 635.72, "text": "delete okay happy with this we'll see", "duration": 4.28, "end": 640.0}
+{"start": 638.04, "text": "what we're going to do with the design", "duration": 4.84, "end": 642.88}
+{"start": 640.0, "text": "of the icons later on let's look at this", "duration": 4.959, "end": 644.959}
+{"start": 642.88, "text": "so This Is The Gallery yeah we can have", "duration": 4.759, "end": 647.639}
+{"start": 644.959, "text": "this Gallery but I don't really feel", "duration": 5.241, "end": 650.1999999999999}
+{"start": 647.639, "text": "this layout let's look for a different", "duration": 4.041, "end": 651.6800000000001}
+{"start": 650.2, "text": "component maybe something a little bit", "duration": 2.72, "end": 652.9200000000001}
+{"start": 651.68, "text": "more", "duration": 3.839, "end": 655.519}
+{"start": 652.92, "text": "interesting maybe this one this one can", "duration": 4.52, "end": 657.4399999999999}
+{"start": 655.519, "text": "feel a little bit like a nice", "duration": 4.401, "end": 659.92}
+{"start": 657.44, "text": "composition photo memories", "duration": 4.839, "end": 662.2790000000001}
+{"start": 659.92, "text": "okay this is the location it's good it's", "duration": 4.479, "end": 664.399}
+{"start": 662.279, "text": "with the map and map is what I wanted", "duration": 3.921, "end": 666.2}
+{"start": 664.399, "text": "I'm probably going to change this from", "duration": 7.0, "end": 671.399}
+{"start": 666.2, "text": "email to uh maybe like uh with a car", "duration": 8.96, "end": 675.1600000000001}
+{"start": 671.399, "text": "maybe I want you know uh with a train", "duration": 7.24, "end": 678.639}
+{"start": 675.16, "text": "how to get there maybe like open in", "duration": 5.679, "end": 680.8389999999999}
+{"start": 678.639, "text": "Google Maps or something like this right", "duration": 3.801, "end": 682.44}
+{"start": 680.839, "text": "and we can of course edit all of these", "duration": 4.161, "end": 685.0}
+{"start": 682.44, "text": "stuff later on lastly join us for the", "duration": 4.92, "end": 687.36}
+{"start": 685.0, "text": "celebration here I actually need the", "duration": 4.0, "end": 689.0}
+{"start": 687.36, "text": "form so let's see if I have a different", "duration": 2.56, "end": 689.92}
+{"start": 689.0, "text": "form", "duration": 3.32, "end": 692.32}
+{"start": 689.92, "text": "form let's see if we have some kind of a", "duration": 4.24, "end": 694.16}
+{"start": 692.32, "text": "form component here so I'm just going to", "duration": 4.0, "end": 696.32}
+{"start": 694.16, "text": "search for form because this is what we", "duration": 4.76, "end": 698.92}
+{"start": 696.32, "text": "need and let's see if I'm getting a form", "duration": 5.24, "end": 701.5600000000001}
+{"start": 698.92, "text": "okay so yeah we're getting this form", "duration": 5.32, "end": 704.24}
+{"start": 701.56, "text": "this form yeah this is actually a good", "duration": 4.8, "end": 706.3599999999999}
+{"start": 704.24, "text": "form it's a simple form I also would", "duration": 4.24, "end": 708.48}
+{"start": 706.36, "text": "like probably like a drop- down menu", "duration": 3.719, "end": 710.0790000000001}
+{"start": 708.48, "text": "where you can select how many people are", "duration": 3.76, "end": 712.24}
+{"start": 710.079, "text": "coming but we're going to do that later", "duration": 4.401, "end": 714.4799999999999}
+{"start": 712.24, "text": "on in web flow so I'm just going to", "duration": 5.2, "end": 717.44}
+{"start": 714.48, "text": "write here RSVP I don't know if we need", "duration": 5.359, "end": 719.839}
+{"start": 717.44, "text": "like a tagline um uh of course we're", "duration": 4.079, "end": 721.519}
+{"start": 719.839, "text": "going to yeah you can edit the text", "duration": 3.721, "end": 723.5600000000001}
+{"start": 721.519, "text": "later on okay so this is going to be the", "duration": 5.081, "end": 726.6}
+{"start": 723.56, "text": "form and for a footer this is for a way", "duration": 4.839, "end": 728.399}
+{"start": 726.6, "text": "bigger website than what we need so we", "duration": 5.799, "end": 732.399}
+{"start": 728.399, "text": "can go for something way simpler here um", "duration": 6.44, "end": 734.839}
+{"start": 732.399, "text": "yeah something like this is going to be", "duration": 5.721, "end": 738.12}
+{"start": 734.839, "text": "great okay so I feel like we have", "duration": 5.161, "end": 740.0}
+{"start": 738.12, "text": "finished the wireframe I feel like we're", "duration": 4.68, "end": 742.8}
+{"start": 740.0, "text": "happy with the content the structure and", "duration": 5.839, "end": 745.839}
+{"start": 742.8, "text": "basically the layout here and now it's", "duration": 5.44, "end": 748.24}
+{"start": 745.839, "text": "time for us to go ahead and experiment", "duration": 5.881, "end": 751.72}
+{"start": 748.24, "text": "with a little bit of a look and feel for", "duration": 6.32, "end": 754.5600000000001}
+{"start": 751.72, "text": "this so I'm heading into the style guide", "duration": 4.84, "end": 756.5600000000001}
+{"start": 754.56, "text": "which is a new and cool feature from", "duration": 4.639, "end": 759.199}
+{"start": 756.56, "text": "reloom and basically this lets us very", "duration": 4.8, "end": 761.3599999999999}
+{"start": 759.199, "text": "very quickly experiment with different", "duration": 5.121, "end": 764.3199999999999}
+{"start": 761.36, "text": "types of color scheme of typography and", "duration": 4.88, "end": 766.24}
+{"start": 764.32, "text": "just experiment with different look and", "duration": 4.92, "end": 769.24}
+{"start": 766.24, "text": "feel so already you can see it gave us a", "duration": 5.399, "end": 771.639}
+{"start": 769.24, "text": "little bit of color and put some images", "duration": 5.039, "end": 774.279}
+{"start": 771.639, "text": "already this feels like a website and", "duration": 5.0, "end": 776.639}
+{"start": 774.279, "text": "not like a wireframe anymore right so", "duration": 3.8, "end": 778.079}
+{"start": 776.639, "text": "let's see what we have here the first", "duration": 3.161, "end": 779.8}
+{"start": 778.079, "text": "thing I actually want to do is I want to", "duration": 4.161, "end": 782.2399999999999}
+{"start": 779.8, "text": "replace the images with actual images of", "duration": 4.039, "end": 783.8389999999999}
+{"start": 782.24, "text": "Mickey and NS just so that we can", "duration": 3.92, "end": 786.16}
+{"start": 783.839, "text": "actually feel this like how it's going", "duration": 4.481, "end": 788.32}
+{"start": 786.16, "text": "to look like so right here in the", "duration": 3.84, "end": 790.0}
+{"start": 788.32, "text": "preview you can see I have this little", "duration": 3.519, "end": 791.839}
+{"start": 790.0, "text": "icon of edit image and I'm just going to", "duration": 4.36, "end": 794.36}
+{"start": 791.839, "text": "upload my own images and I do have here", "duration": 5.641, "end": 797.48}
+{"start": 794.36, "text": "some images so let's just pick something", "duration": 5.32, "end": 799.6800000000001}
+{"start": 797.48, "text": "I feel like yeah this is probably solid", "duration": 3.08, "end": 800.5600000000001}
+{"start": 799.68, "text": "for a", "duration": 4.959, "end": 804.6389999999999}
+{"start": 800.56, "text": "hero and let's choose that upload that", "duration": 6.519, "end": 807.079}
+{"start": 804.639, "text": "can already tell this color scheme is", "duration": 5.241, "end": 809.88}
+{"start": 807.079, "text": "not going to work for well actually you", "duration": 5.721, "end": 812.8}
+{"start": 809.88, "text": "know what let's see let's see okay for", "duration": 5.16, "end": 815.04}
+{"start": 812.8, "text": "these images here let's go ahead and", "duration": 4.24, "end": 817.04}
+{"start": 815.04, "text": "replace them as well so I'm going to go", "duration": 5.2, "end": 820.24}
+{"start": 817.04, "text": "ahead and upload a bunch of different", "duration": 7.0, "end": 824.04}
+{"start": 820.24, "text": "images you know here let's just see how", "duration": 4.839, "end": 825.0790000000001}
+{"start": 824.04, "text": "it", "duration": 4.239, "end": 828.279}
+{"start": 825.079, "text": "looks just select random images of", "duration": 6.041, "end": 831.12}
+{"start": 828.279, "text": "course we can always finalize and make", "duration": 6.081, "end": 834.36}
+{"start": 831.12, "text": "final choices later down the line but I", "duration": 6.399, "end": 837.519}
+{"start": 834.36, "text": "feel like yeah feel like this is pretty", "duration": 5.12, "end": 839.48}
+{"start": 837.519, "text": "pretty solid", "duration": 4.721, "end": 842.24}
+{"start": 839.48, "text": "okay images are", "duration": 7.12, "end": 846.6}
+{"start": 842.24, "text": "uploaded and now okay so now let's", "duration": 6.88, "end": 849.12}
+{"start": 846.6, "text": "tackle first of all we've got the color", "duration": 4.479, "end": 851.0790000000001}
+{"start": 849.12, "text": "scheme and then we've got the typography", "duration": 4.6, "end": 853.72}
+{"start": 851.079, "text": "and a little bit of UI style so for the", "duration": 5.32, "end": 856.399}
+{"start": 853.72, "text": "colors the first thing we can do is just", "duration": 5.919, "end": 859.639}
+{"start": 856.399, "text": "Shuffle and just experiment with", "duration": 5.12, "end": 861.519}
+{"start": 859.639, "text": "different palettes but I want to tell", "duration": 4.241, "end": 863.88}
+{"start": 861.519, "text": "you the truth I'm just looking at how", "duration": 5.641, "end": 867.16}
+{"start": 863.88, "text": "this looks like three colors plus Black", "duration": 5.399, "end": 869.279}
+{"start": 867.16, "text": "and Whites for a wedding photography he", "duration": 4.679, "end": 871.8389999999999}
+{"start": 869.279, "text": "feels like too much a little bit so the", "duration": 3.721, "end": 873.0}
+{"start": 871.839, "text": "first thing I want to do is I'm just", "duration": 2.92, "end": 874.759}
+{"start": 873.0, "text": "going to get rid of them I just want", "duration": 5.519, "end": 878.519}
+{"start": 874.759, "text": "like very clean maybe just like with one", "duration": 6.52, "end": 881.279}
+{"start": 878.519, "text": "color um and let's see how that would", "duration": 5.401, "end": 883.92}
+{"start": 881.279, "text": "look like so I'm just generating random", "duration": 4.881, "end": 886.16}
+{"start": 883.92, "text": "colors now I have this palette here by", "duration": 4.56, "end": 888.4799999999999}
+{"start": 886.16, "text": "the way and we've got also light theme", "duration": 5.919, "end": 892.079}
+{"start": 888.48, "text": "and dark theme and the default here was", "duration": 5.919, "end": 894.399}
+{"start": 892.079, "text": "night theme or dark theme but now it's", "duration": 5.481, "end": 897.56}
+{"start": 894.399, "text": "light already this feels much better in", "duration": 5.081, "end": 899.48}
+{"start": 897.56, "text": "terms for me at least in in terms of", "duration": 4.519, "end": 902.079}
+{"start": 899.48, "text": "color scheme now you can also see here I", "duration": 4.96, "end": 904.44}
+{"start": 902.079, "text": "can go ahead and click and if I click it", "duration": 4.801, "end": 906.88}
+{"start": 904.44, "text": "basically gives me different variations", "duration": 4.519, "end": 908.9590000000001}
+{"start": 906.88, "text": "of this color palette so I can have this", "duration": 4.399, "end": 911.279}
+{"start": 908.959, "text": "one as white this one as a little bit of", "duration": 4.281, "end": 913.2399999999999}
+{"start": 911.279, "text": "a pale maybe this one let's make this", "duration": 3.761, "end": 915.04}
+{"start": 913.24, "text": "one", "duration": 4.76, "end": 918.0}
+{"start": 915.04, "text": "darker maybe the dark", "duration": 5.76, "end": 920.8}
+{"start": 918.0, "text": "blue yeah this is actually pretty solid", "duration": 4.04, "end": 922.04}
+{"start": 920.8, "text": "this can be", "duration": 4.08, "end": 924.88}
+{"start": 922.04, "text": "white actually I'm happy with with how", "duration": 4.56, "end": 926.5999999999999}
+{"start": 924.88, "text": "this maybe this will do this like a", "duration": 5.04, "end": 929.92}
+{"start": 926.6, "text": "light light blue okay so now this", "duration": 6.88, "end": 933.48}
+{"start": 929.92, "text": "actually feels pretty good I'm not sure", "duration": 5.039, "end": 934.959}
+{"start": 933.48, "text": "about the color I can go ahead and", "duration": 3.719, "end": 937.1990000000001}
+{"start": 934.959, "text": "Shuffle up a few more times I do feel", "duration": 4.201, "end": 939.16}
+{"start": 937.199, "text": "like it's nice that it's kind of like", "duration": 4.481, "end": 941.68}
+{"start": 939.16, "text": "subtle and because the images have a lot", "duration": 4.76, "end": 943.92}
+{"start": 941.68, "text": "of green in them actually here this", "duration": 5.36, "end": 947.04}
+{"start": 943.92, "text": "greenish tone actually not bad and if I", "duration": 5.159, "end": 949.079}
+{"start": 947.04, "text": "want to refine this even further I can", "duration": 4.4, "end": 951.4399999999999}
+{"start": 949.079, "text": "click on the but the color itself and", "duration": 5.161, "end": 954.2399999999999}
+{"start": 951.44, "text": "then maybe take it to a little bit more", "duration": 4.639, "end": 956.0790000000001}
+{"start": 954.24, "text": "greenish like", "duration": 5.839, "end": 960.0790000000001}
+{"start": 956.079, "text": "this okay so this feels much better to", "duration": 7.2, "end": 963.279}
+{"start": 960.079, "text": "me so again I suck at colors and this", "duration": 5.521, "end": 965.5999999999999}
+{"start": 963.279, "text": "just makes things so much easier for me", "duration": 5.0, "end": 968.279}
+{"start": 965.6, "text": "just to get like good suggestions to get", "duration": 5.0, "end": 970.6}
+{"start": 968.279, "text": "started with and make sure I don't do", "duration": 5.641, "end": 973.92}
+{"start": 970.6, "text": "anything wrong because the most basic", "duration": 5.2, "end": 975.8000000000001}
+{"start": 973.92, "text": "mistake I see beginners make is just", "duration": 3.8, "end": 977.7199999999999}
+{"start": 975.8, "text": "picking colors that you know are not", "duration": 3.719, "end": 979.519}
+{"start": 977.72, "text": "contrasted it's difficult to read the", "duration": 3.88, "end": 981.6}
+{"start": 979.519, "text": "text they don't work well together so", "duration": 4.161, "end": 983.68}
+{"start": 981.6, "text": "the fact that real is really simplified", "duration": 4.479, "end": 986.0790000000001}
+{"start": 983.68, "text": "color selection for me just is huge", "duration": 5.079, "end": 988.7589999999999}
+{"start": 986.079, "text": "timesaver all right let's go for look at", "duration": 4.641, "end": 990.7199999999999}
+{"start": 988.759, "text": "the the typography this is pretty bold", "duration": 4.0, "end": 992.759}
+{"start": 990.72, "text": "I'm not saying that it can't work for a", "duration": 3.52, "end": 994.24}
+{"start": 992.759, "text": "wedding but I have like a little bit", "duration": 4.961, "end": 997.72}
+{"start": 994.24, "text": "more like an elegant vibe to this", "duration": 5.519, "end": 999.759}
+{"start": 997.72, "text": "website that I want so let's pick the", "duration": 5.16, "end": 1002.88}
+{"start": 999.759, "text": "heading now it it asks me of the", "duration": 5.961, "end": 1005.72}
+{"start": 1002.88, "text": "different types of you know styles that", "duration": 4.48, "end": 1007.36}
+{"start": 1005.72, "text": "I want and I think I'm going to go with", "duration": 5.239, "end": 1010.9590000000001}
+{"start": 1007.36, "text": "siif feels a little bit more elegant now", "duration": 5.76, "end": 1013.12}
+{"start": 1010.959, "text": "like a font from serif so which one do I", "duration": 5.161, "end": 1016.1199999999999}
+{"start": 1013.12, "text": "like uh let's like the this one player", "duration": 5.48, "end": 1018.6}
+{"start": 1016.12, "text": "for display and then get recommendations", "duration": 4.56, "end": 1020.68}
+{"start": 1018.6, "text": "so already gives me recommendation from", "duration": 4.039, "end": 1022.639}
+{"start": 1020.68, "text": "free Google fonts that I will be able to", "duration": 5.84, "end": 1026.52}
+{"start": 1022.639, "text": "use for free on my website and actually", "duration": 5.92, "end": 1028.559}
+{"start": 1026.52, "text": "even below here we've got Collections", "duration": 4.519, "end": 1031.039}
+{"start": 1028.559, "text": "and we've got like elegant which is what", "duration": 4.041, "end": 1032.6}
+{"start": 1031.039, "text": "I'm looking for so let's check out the", "duration": 4.121, "end": 1035.16}
+{"start": 1032.6, "text": "elegant collection and now I've got a", "duration": 4.76, "end": 1037.36}
+{"start": 1035.16, "text": "little bit of choices actually a lot of", "duration": 4.519, "end": 1039.679}
+{"start": 1037.36, "text": "choices and I can click through them and", "duration": 4.959, "end": 1042.319}
+{"start": 1039.679, "text": "start seeing how they look right here in", "duration": 5.28, "end": 1044.959}
+{"start": 1042.319, "text": "the preview and this actually looks", "duration": 4.72, "end": 1047.039}
+{"start": 1044.959, "text": "looks pretty good you know what I'm not", "duration": 3.641, "end": 1048.6000000000001}
+{"start": 1047.039, "text": "even going to try different things cuz I", "duration": 4.201, "end": 1051.24}
+{"start": 1048.6, "text": "actually like this now for the body", "duration": 4.64, "end": 1053.24}
+{"start": 1051.24, "text": "which is the smaller text we've got this", "duration": 3.88, "end": 1055.1200000000001}
+{"start": 1053.24, "text": "space for text which actually looks a", "duration": 3.36, "end": 1056.6}
+{"start": 1055.12, "text": "little bit technical I don't know if", "duration": 3.32, "end": 1058.4399999999998}
+{"start": 1056.6, "text": "it's maybe for a tech company that feels", "duration": 5.16, "end": 1061.76}
+{"start": 1058.44, "text": "good but for this website uh let's look", "duration": 4.92, "end": 1063.3600000000001}
+{"start": 1061.76, "text": "for something a little", "duration": 5.48, "end": 1067.24}
+{"start": 1063.36, "text": "cleaner maybe yeah maybe this public Sun", "duration": 6.08, "end": 1069.4399999999998}
+{"start": 1067.24, "text": "just a little bit cleaner yeah feel like", "duration": 5.08, "end": 1072.32}
+{"start": 1069.44, "text": "it's good now I also have this small", "duration": 5.2, "end": 1074.64}
+{"start": 1072.32, "text": "normal so let's experiment with this", "duration": 7.04, "end": 1079.36}
+{"start": 1074.64, "text": "small text large regular large text", "duration": 7.08, "end": 1081.72}
+{"start": 1079.36, "text": "actually looking at this right", "duration": 5.799, "end": 1085.1589999999999}
+{"start": 1081.72, "text": "now I actually like the large", "duration": 6.199, "end": 1087.919}
+{"start": 1085.159, "text": "one best although I don't like that we", "duration": 5.081, "end": 1090.24}
+{"start": 1087.919, "text": "have a single word here so I might", "duration": 4.321, "end": 1092.24}
+{"start": 1090.24, "text": "change the text a little bit later but", "duration": 4.0, "end": 1094.24}
+{"start": 1092.24, "text": "in terms of design I actually like the", "duration": 5.439, "end": 1097.679}
+{"start": 1094.24, "text": "large the large one best in terms of", "duration": 5.4, "end": 1099.64}
+{"start": 1097.679, "text": "weight I can make this I guess Bolder", "duration": 4.081, "end": 1101.76}
+{"start": 1099.64, "text": "but I actually like the way that it is", "duration": 4.36, "end": 1104.0}
+{"start": 1101.76, "text": "here and we also have a style like can", "duration": 4.279, "end": 1106.039}
+{"start": 1104.0, "text": "space out the letters we can make it", "duration": 4.28, "end": 1108.28}
+{"start": 1106.039, "text": "uppercase oo this actually looks nice", "duration": 4.561, "end": 1110.6}
+{"start": 1108.28, "text": "uppercase so let's go with this so I'm", "duration": 4.12, "end": 1112.3999999999999}
+{"start": 1110.6, "text": "going to stay with", "duration": 6.64, "end": 1117.24}
+{"start": 1112.4, "text": "this yeah type looks much nicer now so I", "duration": 8.12, "end": 1120.52}
+{"start": 1117.24, "text": "I'm liking this um let's see what else", "duration": 5.28, "end": 1122.52}
+{"start": 1120.52, "text": "do I have here so we've got the buttons", "duration": 4.399, "end": 1124.9189999999999}
+{"start": 1122.52, "text": "whether I want buttons to be like with", "duration": 4.68, "end": 1127.2}
+{"start": 1124.919, "text": "an outline with kind of like a", "duration": 6.801, "end": 1131.72}
+{"start": 1127.2, "text": "shady um what is slick slick let's go", "duration": 9.32, "end": 1136.52}
+{"start": 1131.72, "text": "with slick rather than elevated no I'm", "duration": 7.72, "end": 1139.44}
+{"start": 1136.52, "text": "just going to go with a slick card and", "duration": 5.6, "end": 1142.12}
+{"start": 1139.44, "text": "images oh we also have by the way the", "duration": 4.479, "end": 1143.919}
+{"start": 1142.12, "text": "round corners so you can see here we've", "duration": 3.679, "end": 1145.799}
+{"start": 1143.919, "text": "got a little bit of a round corner here", "duration": 4.481, "end": 1148.4}
+{"start": 1145.799, "text": "I can go with a like a much bigger round", "duration": 4.961, "end": 1150.76}
+{"start": 1148.4, "text": "corner and I actually think this is nice", "duration": 4.92, "end": 1153.3200000000002}
+{"start": 1150.76, "text": "I like these round corners everything", "duration": 5.44, "end": 1156.2}
+{"start": 1153.32, "text": "here looks very cute", "duration": 5.839, "end": 1159.1589999999999}
+{"start": 1156.2, "text": "actually so you know what I think that", "duration": 6.64, "end": 1162.8400000000001}
+{"start": 1159.159, "text": "at this point I like this concept but", "duration": 5.52, "end": 1164.679}
+{"start": 1162.84, "text": "the way professional designers always", "duration": 5.0, "end": 1167.84}
+{"start": 1164.679, "text": "work is not just making a one design and", "duration": 5.36, "end": 1170.039}
+{"start": 1167.84, "text": "then going with it they always explore", "duration": 4.44, "end": 1172.28}
+{"start": 1170.039, "text": "multiple ideas also a lot of times they", "duration": 4.481, "end": 1174.52}
+{"start": 1172.28, "text": "like to show clients multiple different", "duration": 4.519, "end": 1176.799}
+{"start": 1174.52, "text": "ideas to pick from so right now we've", "duration": 4.0, "end": 1178.52}
+{"start": 1176.799, "text": "got this and this is concept number one", "duration": 3.281, "end": 1180.08}
+{"start": 1178.52, "text": "and you can see here I can pitch", "duration": 4.039, "end": 1182.559}
+{"start": 1180.08, "text": "Concepts and I can review or compare a", "duration": 4.68, "end": 1184.76}
+{"start": 1182.559, "text": "few different concepts so let's go here", "duration": 3.881, "end": 1186.44}
+{"start": 1184.76, "text": "and let's actually go ahead and create a", "duration": 4.08, "end": 1188.84}
+{"start": 1186.44, "text": "new concept so let's try something else", "duration": 4.44, "end": 1190.88}
+{"start": 1188.84, "text": "just to see you know if we can get", "duration": 4.64, "end": 1193.48}
+{"start": 1190.88, "text": "something even better and I'm going to", "duration": 4.96, "end": 1195.8400000000001}
+{"start": 1193.48, "text": "have to upload the images again which is", "duration": 5.28, "end": 1198.76}
+{"start": 1195.84, "text": "a little bit tedious okay so let's just", "duration": 4.68, "end": 1200.52}
+{"start": 1198.76, "text": "choose something else just so that we", "duration": 4.2, "end": 1202.96}
+{"start": 1200.52, "text": "can yeah maybe it looks a little bit", "duration": 6.72, "end": 1207.24}
+{"start": 1202.96, "text": "different right so I'm just going to do", "duration": 9.839, "end": 1212.799}
+{"start": 1207.24, "text": "that uh let's replace the photos here as", "duration": 5.559, "end": 1212.799}
+{"start": 1213.36, "text": "well and see what we're getting this one", "duration": 6.199, "end": 1219.559}
+{"start": 1217.12, "text": "we had", "duration": 2.439, "end": 1219.559}
+{"start": 1223.72, "text": "already Okay so this time let's try to", "duration": 6.56, "end": 1230.28}
+{"start": 1228.799, "text": "do something with a little bit more", "duration": 4.041, "end": 1232.84}
+{"start": 1230.28, "text": "colors right the previous palette was", "duration": 4.44, "end": 1234.72}
+{"start": 1232.84, "text": "just like a single color palette let's", "duration": 3.88, "end": 1236.72}
+{"start": 1234.72, "text": "see what we can do with something else I", "duration": 3.76, "end": 1238.48}
+{"start": 1236.72, "text": "still feel like we need this to be like", "duration": 5.92, "end": 1242.64}
+{"start": 1238.48, "text": "a light um color versus like a dark", "duration": 6.8, "end": 1245.28}
+{"start": 1242.64, "text": "website um let's play around let's", "duration": 5.8, "end": 1248.44}
+{"start": 1245.28, "text": "Shuffle maybe these kind of like pastel", "duration": 6.32, "end": 1251.6}
+{"start": 1248.44, "text": "colors can look nicer so let's click", "duration": 4.52, "end": 1252.96}
+{"start": 1251.6, "text": "here to play", "duration": 4.84, "end": 1256.4399999999998}
+{"start": 1252.96, "text": "around with this peachy peach and", "duration": 6.52, "end": 1259.48}
+{"start": 1256.44, "text": "purple h", "duration": 5.04, "end": 1261.48}
+{"start": 1259.48, "text": "it's a little bit too much oh this is", "duration": 4.84, "end": 1264.32}
+{"start": 1261.48, "text": "actually quite", "duration": 2.84, "end": 1264.32}
+{"start": 1264.6, "text": "nice no I would keep this like", "duration": 7.6, "end": 1272.1999999999998}
+{"start": 1269.039, "text": "maybe light and this can be maybe white", "duration": 5.481, "end": 1274.52}
+{"start": 1272.2, "text": "and this is", "duration": 8.12, "end": 1280.32}
+{"start": 1274.52, "text": "okay okay maybe we'll do this darker or", "duration": 5.8, "end": 1280.32}
+{"start": 1280.64, "text": "something yeah okay now I feel like", "duration": 4.76, "end": 1285.4}
+{"start": 1283.48, "text": "we've got enough contrast and interest", "duration": 6.199, "end": 1289.679}
+{"start": 1285.4, "text": "as we're scrolling in here in terms of", "duration": 7.04, "end": 1292.44}
+{"start": 1289.679, "text": "typography maybe we do want to have like", "duration": 4.721, "end": 1294.4}
+{"start": 1292.44, "text": "a different concept here let's see what", "duration": 4.64, "end": 1297.0800000000002}
+{"start": 1294.4, "text": "we have under display display is fonts", "duration": 4.879, "end": 1299.279}
+{"start": 1297.08, "text": "that look nicer when they're big maybe", "duration": 5.4, "end": 1302.48}
+{"start": 1299.279, "text": "something like this a real fat face", "duration": 4.721, "end": 1304.0}
+{"start": 1302.48, "text": "let's see if we can have something a", "duration": 4.28, "end": 1306.76}
+{"start": 1304.0, "text": "little bit more interesting here hey", "duration": 4.36, "end": 1308.36}
+{"start": 1306.76, "text": "maybe this one", "duration": 5.64, "end": 1312.4}
+{"start": 1308.36, "text": "Glock that's also looks", "duration": 4.04, "end": 1312.3999999999999}
+{"start": 1312.44, "text": "pretty pretty elegant I would say I", "duration": 4.599, "end": 1317.039}
+{"start": 1315.279, "text": "would maybe want to space out the", "duration": 4.121, "end": 1319.4}
+{"start": 1317.039, "text": "letters a little bit feels", "duration": 3.681, "end": 1320.72}
+{"start": 1319.4, "text": "feels", "duration": 5.04, "end": 1324.44}
+{"start": 1320.72, "text": "nicer okay okay okay in here maybe let's", "duration": 6.36, "end": 1327.08}
+{"start": 1324.44, "text": "try buttons that are actually not round", "duration": 5.28, "end": 1329.72}
+{"start": 1327.08, "text": "corners let's make it sharp and let's", "duration": 6.32, "end": 1333.3999999999999}
+{"start": 1329.72, "text": "make the images sharp as well just to to", "duration": 7.319, "end": 1337.039}
+{"start": 1333.4, "text": "see a little bit of a different vibe to", "duration": 6.32, "end": 1339.72}
+{"start": 1337.039, "text": "this one okay say I'm happy with this I", "duration": 6.361, "end": 1343.4}
+{"start": 1339.72, "text": "can now go back into Peach concept and", "duration": 5.48, "end": 1345.2}
+{"start": 1343.4, "text": "you know start debating this I can go", "duration": 4.279, "end": 1347.679}
+{"start": 1345.2, "text": "ahead and share this with my client if I", "duration": 5.2, "end": 1350.4}
+{"start": 1347.679, "text": "want I can get feedback I can write a", "duration": 4.721, "end": 1352.4}
+{"start": 1350.4, "text": "description for each one of the concepts", "duration": 4.2, "end": 1354.6000000000001}
+{"start": 1352.4, "text": "and this is how a real professional", "duration": 4.56, "end": 1356.96}
+{"start": 1354.6, "text": "would actually work in this case I think", "duration": 5.52, "end": 1360.12}
+{"start": 1356.96, "text": "I'm happy actually with the first", "duration": 5.68, "end": 1362.64}
+{"start": 1360.12, "text": "version that we have created so let's", "duration": 5.52, "end": 1365.6399999999999}
+{"start": 1362.64, "text": "say the client or miky and on picked", "duration": 5.12, "end": 1367.76}
+{"start": 1365.64, "text": "this version and now let's take it to", "duration": 5.32, "end": 1370.96}
+{"start": 1367.76, "text": "webflow to fully develop", "duration": 6.0, "end": 1373.76}
+{"start": 1370.96, "text": "it now to export our website into", "duration": 4.599, "end": 1375.559}
+{"start": 1373.76, "text": "webflow the first thing we need to do is", "duration": 5.279, "end": 1379.039}
+{"start": 1375.559, "text": "to clone the reom starter file now I", "duration": 5.561, "end": 1381.12}
+{"start": 1379.039, "text": "just want to say a quick word about web", "duration": 4.801, "end": 1383.84}
+{"start": 1381.12, "text": "flow web flow is a super super powerful", "duration": 5.159, "end": 1386.279}
+{"start": 1383.84, "text": "tool and it does have a little bit of a", "duration": 4.079, "end": 1387.9189999999999}
+{"start": 1386.279, "text": "learning cve that's why we have a lot of", "duration": 4.201, "end": 1390.48}
+{"start": 1387.919, "text": "video tutorials on uh web flow we even", "duration": 4.76, "end": 1392.679}
+{"start": 1390.48, "text": "have a full-on course on web flow", "duration": 4.0, "end": 1394.48}
+{"start": 1392.679, "text": "however what I'm going to demonstrate", "duration": 4.521, "end": 1397.2}
+{"start": 1394.48, "text": "right now requires almost zero", "duration": 3.88, "end": 1398.3600000000001}
+{"start": 1397.2, "text": "understanding in webflow so you'll be", "duration": 3.52, "end": 1400.72}
+{"start": 1398.36, "text": "able to follow along even if you have no", "duration": 5.0, "end": 1403.36}
+{"start": 1400.72, "text": "background in web flow so fear nothing", "duration": 5.04, "end": 1405.76}
+{"start": 1403.36, "text": "right so this starter guide from reloom", "duration": 5.16, "end": 1408.52}
+{"start": 1405.76, "text": "Al includes a style guide that is BAS", "duration": 5.68, "end": 1411.44}
+{"start": 1408.52, "text": "basically has all of the styles that we", "duration": 5.519, "end": 1414.039}
+{"start": 1411.44, "text": "have created here in this style guide so", "duration": 4.599, "end": 1416.039}
+{"start": 1414.039, "text": "relim is basically going to import", "duration": 4.12, "end": 1418.1589999999999}
+{"start": 1416.039, "text": "everything here and then also the", "duration": 3.681, "end": 1419.72}
+{"start": 1418.159, "text": "content itself now the way that we're", "duration": 4.12, "end": 1422.279}
+{"start": 1419.72, "text": "going to do this is we can open up here", "duration": 5.04, "end": 1424.76}
+{"start": 1422.279, "text": "the webflow apps and we can search for", "duration": 5.161, "end": 1427.44}
+{"start": 1424.76, "text": "reloom and then we can go ahead and", "duration": 5.799, "end": 1430.559}
+{"start": 1427.44, "text": "install it on this website now once that", "duration": 6.239, "end": 1433.679}
+{"start": 1430.559, "text": "is happening we will be able to see the", "duration": 4.841, "end": 1435.3999999999999}
+{"start": 1433.679, "text": "website we've been working on so Miki", "duration": 3.321, "end": 1437.0}
+{"start": 1435.4, "text": "and Nom's wedding and I'm going to click", "duration": 3.96, "end": 1439.3600000000001}
+{"start": 1437.0, "text": "this and", "duration": 4.64, "end": 1441.64}
+{"start": 1439.36, "text": "I will be able to see all of the", "duration": 3.76, "end": 1443.12}
+{"start": 1441.64, "text": "different concepts right so we have", "duration": 3.36, "end": 1445.0}
+{"start": 1443.12, "text": "concept one and concept two what I want", "duration": 6.039, "end": 1449.1589999999999}
+{"start": 1445.0, "text": "to do is import concept one so continue", "duration": 7.32, "end": 1452.32}
+{"start": 1449.159, "text": "and then what kind of pages I want to uh", "duration": 5.241, "end": 1454.4}
+{"start": 1452.32, "text": "import I do want all pages which is", "duration": 3.76, "end": 1456.08}
+{"start": 1454.4, "text": "basically just a homepage so I'm going", "duration": 4.2, "end": 1458.6000000000001}
+{"start": 1456.08, "text": "to start import and this is going to", "duration": 5.16, "end": 1461.24}
+{"start": 1458.6, "text": "take a few minutes to bring in all of", "duration": 6.52, "end": 1465.12}
+{"start": 1461.24, "text": "the content into webflow a few moments", "duration": 7.52, "end": 1468.76}
+{"start": 1465.12, "text": "later B bam so the import has finish and", "duration": 5.32, "end": 1470.4399999999998}
+{"start": 1468.76, "text": "this took a couple of minutes but it did", "duration": 4.32, "end": 1473.08}
+{"start": 1470.44, "text": "save us 4 hours because basically", "duration": 4.599, "end": 1475.039}
+{"start": 1473.08, "text": "usually takes about 30 minutes to build", "duration": 3.88, "end": 1476.96}
+{"start": 1475.039, "text": "each section and I can attest that this", "duration": 3.88, "end": 1478.919}
+{"start": 1476.96, "text": "is true this is really really a huge", "duration": 4.88, "end": 1481.8400000000001}
+{"start": 1478.919, "text": "timesaver so now that we've got the", "duration": 6.201, "end": 1485.1200000000001}
+{"start": 1481.84, "text": "whole website inside of webflow let's", "duration": 5.64, "end": 1487.48}
+{"start": 1485.12, "text": "see what it takes to really bring this", "duration": 4.799, "end": 1489.9189999999999}
+{"start": 1487.48, "text": "website to conclusion to make sure that", "duration": 5.799, "end": 1493.279}
+{"start": 1489.919, "text": "it's all functional and working so let's", "duration": 5.081, "end": 1495.0}
+{"start": 1493.279, "text": "start from the top and we've got this", "duration": 4.64, "end": 1497.919}
+{"start": 1495.0, "text": "navigation we've got this logo here so", "duration": 5.0, "end": 1500.0}
+{"start": 1497.919, "text": "let's double click this now this is you", "duration": 4.48, "end": 1502.3990000000001}
+{"start": 1500.0, "text": "can see this is a a green instance", "duration": 4.559, "end": 1504.559}
+{"start": 1502.399, "text": "because this is a component I'm not", "duration": 4.681, "end": 1507.08}
+{"start": 1504.559, "text": "going to get into as I said Deep Web", "duration": 3.961, "end": 1508.52}
+{"start": 1507.08, "text": "flow stuff so I'm just going to double", "duration": 3.479, "end": 1510.559}
+{"start": 1508.52, "text": "click this so I can edit this now in", "duration": 4.96, "end": 1513.48}
+{"start": 1510.559, "text": "this case we have here like a an image", "duration": 4.72, "end": 1515.279}
+{"start": 1513.48, "text": "of a logo and I actually don't want this", "duration": 4.12, "end": 1517.6}
+{"start": 1515.279, "text": "so I'm going to hit the backspace to", "duration": 4.361, "end": 1519.64}
+{"start": 1517.6, "text": "delete this and I'm actually just going", "duration": 5.28, "end": 1522.8799999999999}
+{"start": 1519.64, "text": "to add like a little bit of a text block", "duration": 5.36, "end": 1525.0}
+{"start": 1522.88, "text": "right here and I'm just going to write", "duration": 8.12, "end": 1531.0}
+{"start": 1525.0, "text": "here Mickey and Noom yeah and let me see", "duration": 8.279, "end": 1533.279}
+{"start": 1531.0, "text": "if this is actually inside of yeah it's", "duration": 5.0, "end": 1536.0}
+{"start": 1533.279, "text": "inside of the navbar logo link which is", "duration": 4.841, "end": 1538.12}
+{"start": 1536.0, "text": "where it should be now I do want it to", "duration": 3.76, "end": 1539.76}
+{"start": 1538.12, "text": "be kind of like in the style of the", "duration": 4.159, "end": 1542.279}
+{"start": 1539.76, "text": "website so as I've mentioned we do have", "duration": 5.84, "end": 1545.6}
+{"start": 1542.279, "text": "a style guide here so already reim has", "duration": 5.841, "end": 1548.12}
+{"start": 1545.6, "text": "created all of these styles for us and", "duration": 4.52, "end": 1550.12}
+{"start": 1548.12, "text": "you can see here I'm going to try to", "duration": 4.039, "end": 1552.1589999999999}
+{"start": 1550.12, "text": "apply this style and you can see here", "duration": 5.279, "end": 1555.399}
+{"start": 1552.159, "text": "this is called heading style H6 so let's", "duration": 5.361, "end": 1557.5200000000002}
+{"start": 1555.399, "text": "go ahead and try to apply this style", "duration": 3.52, "end": 1558.9189999999999}
+{"start": 1557.52, "text": "which you can see here in the style", "duration": 4.36, "end": 1561.8799999999999}
+{"start": 1558.919, "text": "panel right here let's try to apply this", "duration": 6.081, "end": 1565.0}
+{"start": 1561.88, "text": "to our logo so I'm going to again double", "duration": 5.72, "end": 1567.6000000000001}
+{"start": 1565.0, "text": "click choose this text and under the", "duration": 6.08, "end": 1571.08}
+{"start": 1567.6, "text": "Styles I'm just going to write H6 and", "duration": 6.12, "end": 1573.7199999999998}
+{"start": 1571.08, "text": "here we go heading style H6 it's this", "duration": 4.12, "end": 1575.1999999999998}
+{"start": 1573.72, "text": "one so I'm going to apply it and", "duration": 3.8, "end": 1577.52}
+{"start": 1575.2, "text": "immediately I have this Tex style here", "duration": 5.079, "end": 1580.279}
+{"start": 1577.52, "text": "which now it looks great looks like yeah", "duration": 5.279, "end": 1582.799}
+{"start": 1580.279, "text": "it's yeah looks like part of the website", "duration": 5.52, "end": 1585.799}
+{"start": 1582.799, "text": "for now okay next I want to make sure", "duration": 5.561, "end": 1588.36}
+{"start": 1585.799, "text": "that these buttons actually work so I", "duration": 4.401, "end": 1590.2}
+{"start": 1588.36, "text": "want the story button to take us to the", "duration": 4.4, "end": 1592.76}
+{"start": 1590.2, "text": "story section event details location and", "duration": 5.88, "end": 1596.0800000000002}
+{"start": 1592.76, "text": "RSVP now to do that we actually need to", "duration": 6.08, "end": 1598.84}
+{"start": 1596.08, "text": "give each of these section an ID so that", "duration": 4.68, "end": 1600.76}
+{"start": 1598.84, "text": "we can connect it so we can tell it hey", "duration": 4.199, "end": 1603.039}
+{"start": 1600.76, "text": "scroll to that specific section now the", "duration": 3.72, "end": 1604.48}
+{"start": 1603.039, "text": "way that we do this so let's start with", "duration": 3.441, "end": 1606.48}
+{"start": 1604.48, "text": "a story I'm going to go here let's say", "duration": 3.96, "end": 1608.44}
+{"start": 1606.48, "text": "this is a story and I'm going to open up", "duration": 3.679, "end": 1610.159}
+{"start": 1608.44, "text": "the Navigator so you can see we have", "duration": 3.839, "end": 1612.279}
+{"start": 1610.159, "text": "this section right now it's section", "duration": 5.161, "end": 1615.3200000000002}
+{"start": 1612.279, "text": "layout 134 under the settings panel", "duration": 5.12, "end": 1617.399}
+{"start": 1615.32, "text": "right here on the right we have an ID so", "duration": 4.44, "end": 1619.76}
+{"start": 1617.399, "text": "let's call this story I'm going to add", "duration": 6.0, "end": 1623.399}
+{"start": 1619.76, "text": "an ID of story again this right this is", "duration": 5.519, "end": 1625.279}
+{"start": 1623.399, "text": "great for event details I'm going to do", "duration": 3.481, "end": 1626.8799999999999}
+{"start": 1625.279, "text": "the same right so I'm going to choose", "duration": 5.241, "end": 1630.52}
+{"start": 1626.88, "text": "the next section and add an idea of", "duration": 6.96, "end": 1633.8400000000001}
+{"start": 1630.52, "text": "details and then what else do we have", "duration": 5.44, "end": 1635.96}
+{"start": 1633.84, "text": "location maybe so", "duration": 5.68, "end": 1639.52}
+{"start": 1635.96, "text": "it's this section let's call this", "duration": 6.079, "end": 1642.039}
+{"start": 1639.52, "text": "location and then the last section which", "duration": 6.2, "end": 1645.72}
+{"start": 1642.039, "text": "is this one let's call this section", "duration": 6.161, "end": 1648.2}
+{"start": 1645.72, "text": "RSVP so now these sections have", "duration": 5.24, "end": 1650.96}
+{"start": 1648.2, "text": "different ideas and I can go through", "duration": 5.199, "end": 1653.3990000000001}
+{"start": 1650.96, "text": "here and I can edit the links so I'm", "duration": 4.4, "end": 1655.3600000000001}
+{"start": 1653.399, "text": "clicking this and under the settings", "duration": 3.64, "end": 1657.039}
+{"start": 1655.36, "text": "here you can see where this is linking", "duration": 3.439, "end": 1658.799}
+{"start": 1657.039, "text": "to you can add a link you can link to a", "duration": 3.64, "end": 1660.679}
+{"start": 1658.799, "text": "different page what we want to do is", "duration": 4.641, "end": 1663.44}
+{"start": 1660.679, "text": "link to a section on the page and I'm", "duration": 4.24, "end": 1664.919}
+{"start": 1663.44, "text": "just going to go here you can see we", "duration": 3.76, "end": 1667.2}
+{"start": 1664.919, "text": "already have a little bit of names of", "duration": 4.081, "end": 1669.0}
+{"start": 1667.2, "text": "different elements here but what I want", "duration": 4.52, "end": 1671.72}
+{"start": 1669.0, "text": "to link to is this one is the story so", "duration": 5.48, "end": 1674.48}
+{"start": 1671.72, "text": "let's go to the story event details", "duration": 5.88, "end": 1677.6000000000001}
+{"start": 1674.48, "text": "let's do the same here to details", "duration": 4.16, "end": 1678.64}
+{"start": 1677.6, "text": "location", "duration": 6.48, "end": 1684.08}
+{"start": 1678.64, "text": "let's do the same here for location in", "duration": 8.44, "end": 1687.0800000000002}
+{"start": 1684.08, "text": "RSVP let's look for the", "duration": 6.16, "end": 1690.24}
+{"start": 1687.08, "text": "link and choose the", "duration": 5.959, "end": 1693.039}
+{"start": 1690.24, "text": "RSVP now let's test this so I'm going to", "duration": 5.12, "end": 1695.36}
+{"start": 1693.039, "text": "hit the preview button here and I'm", "duration": 4.961, "end": 1698.0}
+{"start": 1695.36, "text": "going to test the story scrolling into", "duration": 5.039, "end": 1700.399}
+{"start": 1698.0, "text": "the story this is great event details is", "duration": 6.08, "end": 1704.08}
+{"start": 1700.399, "text": "scrolling to the event details location", "duration": 6.961, "end": 1707.36}
+{"start": 1704.08, "text": "scrolling to the location perfect RSVP", "duration": 5.719, "end": 1709.799}
+{"start": 1707.36, "text": "is scrolling into the RSVP this is", "duration": 4.72, "end": 1712.08}
+{"start": 1709.799, "text": "fantastic all right we also probably", "duration": 5.041, "end": 1714.84}
+{"start": 1712.08, "text": "need to connect this button so let's do", "duration": 7.16, "end": 1719.24}
+{"start": 1714.84, "text": "the same here page section RSVP okay so", "duration": 6.88, "end": 1721.72}
+{"start": 1719.24, "text": "now we've got a functioning navigation", "duration": 4.6, "end": 1723.84}
+{"start": 1721.72, "text": "and buttons the next thing we wanted to", "duration": 5.24, "end": 1726.96}
+{"start": 1723.84, "text": "do is to replace these icons okay so", "duration": 4.439, "end": 1728.279}
+{"start": 1726.96, "text": "where are we going to get icons I'm", "duration": 3.52, "end": 1730.48}
+{"start": 1728.279, "text": "going to go to Icon finder that's my", "duration": 4.4, "end": 1732.679}
+{"start": 1730.48, "text": "favorite place to get free icons super", "duration": 5.079, "end": 1735.559}
+{"start": 1732.679, "text": "fast so we can go here and uh what was", "duration": 5.521, "end": 1738.2}
+{"start": 1735.559, "text": "the icon so first one is the date so so", "duration": 5.84, "end": 1741.399}
+{"start": 1738.2, "text": "I'm going to search for date and let's", "duration": 6.24, "end": 1744.44}
+{"start": 1741.399, "text": "see I want to look for free icons I want", "duration": 5.16, "end": 1746.559}
+{"start": 1744.44, "text": "to make sure they are outlined that's", "duration": 4.52, "end": 1748.96}
+{"start": 1746.559, "text": "the style that I want and yeah maybe", "duration": 4.881, "end": 1751.44}
+{"start": 1748.96, "text": "this one is is actually pretty good", "duration": 5.52, "end": 1754.48}
+{"start": 1751.44, "text": "let's see what we need here this is like", "duration": 5.68, "end": 1757.1200000000001}
+{"start": 1754.48, "text": "a black icon yeah so this icon can", "duration": 4.559, "end": 1759.039}
+{"start": 1757.12, "text": "actually work as it is right so I can", "duration": 5.36, "end": 1762.4799999999998}
+{"start": 1759.039, "text": "just click download SVG and let's call", "duration": 6.0, "end": 1765.039}
+{"start": 1762.48, "text": "this date let's also look for the other", "duration": 4.64, "end": 1767.1200000000001}
+{"start": 1765.039, "text": "one so we've got location and dress code", "duration": 5.281, "end": 1770.32}
+{"start": 1767.12, "text": "so location let's look for", "duration": 7.32, "end": 1774.4399999999998}
+{"start": 1770.32, "text": "location let's see what we have um this", "duration": 5.479, "end": 1775.799}
+{"start": 1774.44, "text": "one looks good to me so I'm going to", "duration": 4.28, "end": 1778.72}
+{"start": 1775.799, "text": "choose this one and download an SVG SVG", "duration": 5.841, "end": 1781.6399999999999}
+{"start": 1778.72, "text": "means this is a vector um which means", "duration": 5.16, "end": 1783.88}
+{"start": 1781.64, "text": "this is a small file it means it's not", "duration": 4.32, "end": 1785.96}
+{"start": 1783.88, "text": "going to be pixelated so this is really", "duration": 4.399, "end": 1788.279}
+{"start": 1785.96, "text": "great last one is dress code so I'm just", "duration": 4.76, "end": 1790.72}
+{"start": 1788.279, "text": "going to do address and let's see if", "duration": 4.561, "end": 1792.84}
+{"start": 1790.72, "text": "there's add dress here that I like yeah", "duration": 4.959, "end": 1795.679}
+{"start": 1792.84, "text": "maybe this one feels good let's download", "duration": 3.6, "end": 1796.4399999999998}
+{"start": 1795.679, "text": "the", "duration": 4.801, "end": 1800.48}
+{"start": 1796.44, "text": "SVG and uh fantastic okay in webflow I'm", "duration": 5.92, "end": 1802.3600000000001}
+{"start": 1800.48, "text": "going to head into the assets panel", "duration": 3.96, "end": 1804.44}
+{"start": 1802.36, "text": "which is right here and I'm going to hit", "duration": 5.319, "end": 1807.6789999999999}
+{"start": 1804.44, "text": "upload and on my desktop I've got these", "duration": 5.88, "end": 1810.3200000000002}
+{"start": 1807.679, "text": "three icons I'm going to open them and", "duration": 4.961, "end": 1812.64}
+{"start": 1810.32, "text": "let's see see them okay they're all in", "duration": 4.239, "end": 1814.559}
+{"start": 1812.64, "text": "here so now I can just double click this", "duration": 4.48, "end": 1817.1200000000001}
+{"start": 1814.559, "text": "icon and replace this one the date I can", "duration": 6.081, "end": 1820.6399999999999}
+{"start": 1817.12, "text": "replace with the date location I can", "duration": 5.24, "end": 1822.36}
+{"start": 1820.64, "text": "replace with the", "duration": 4.72, "end": 1825.3600000000001}
+{"start": 1822.36, "text": "location and dress code I'm going to", "duration": 6.6, "end": 1828.9599999999998}
+{"start": 1825.36, "text": "replace with the dress okay okay so", "duration": 6.799, "end": 1832.1589999999999}
+{"start": 1828.96, "text": "event detail this section also looks", "duration": 5.319, "end": 1834.279}
+{"start": 1832.159, "text": "great what else do we have", "duration": 5.24, "end": 1837.3990000000001}
+{"start": 1834.279, "text": "here okay lastly we want to make sure", "duration": 6.801, "end": 1841.08}
+{"start": 1837.399, "text": "that this form actually works okay so", "duration": 6.081, "end": 1843.4799999999998}
+{"start": 1841.08, "text": "first thing that I've noted is we want", "duration": 4.839, "end": 1845.9189999999999}
+{"start": 1843.48, "text": "to have this drop- down menu where we", "duration": 4.88, "end": 1848.3600000000001}
+{"start": 1845.919, "text": "can select how many people are coming", "duration": 6.401, "end": 1852.3200000000002}
+{"start": 1848.36, "text": "let's actually see if um in the style", "duration": 7.6, "end": 1855.9599999999998}
+{"start": 1852.32, "text": "guide maybe we already have a drop-down", "duration": 5.4, "end": 1857.72}
+{"start": 1855.96, "text": "menu we can just copy and paste because", "duration": 4.839, "end": 1860.799}
+{"start": 1857.72, "text": "a lot of times we do have form elements", "duration": 6.04, "end": 1863.76}
+{"start": 1860.799, "text": "in here let's scroll through this there", "duration": 6.6, "end": 1867.399}
+{"start": 1863.76, "text": "we go so form elements and uh we have", "duration": 7.32, "end": 1871.08}
+{"start": 1867.399, "text": "text area filled label form input", "duration": 4.601, "end": 1872.0}
+{"start": 1871.08, "text": "there's", "duration": 3.76, "end": 1874.84}
+{"start": 1872.0, "text": "no here we go so this is a select this", "duration": 4.519, "end": 1876.519}
+{"start": 1874.84, "text": "is called a select like a drop- down", "duration": 3.52, "end": 1878.36}
+{"start": 1876.519, "text": "menu so I'm just going to click this I'm", "duration": 5.721, "end": 1882.24}
+{"start": 1878.36, "text": "going to copy this so command C to copy", "duration": 5.799, "end": 1884.1589999999999}
+{"start": 1882.24, "text": "I'm going to go back into the", "duration": 5.439, "end": 1887.679}
+{"start": 1884.159, "text": "homepage and let's scroll here and let's", "duration": 5.76, "end": 1889.919}
+{"start": 1887.679, "text": "actually just click the form and paste", "duration": 5.761, "end": 1893.44}
+{"start": 1889.919, "text": "it now I don't need this at the button", "duration": 6.72, "end": 1896.6390000000001}
+{"start": 1893.44, "text": "so let's see where it is let's see where", "duration": 6.359, "end": 1899.799}
+{"start": 1896.639, "text": "it's pasted form input let's actually go", "duration": 5.681, "end": 1902.32}
+{"start": 1899.799, "text": "ahead and after the because you can see", "duration": 3.88, "end": 1903.679}
+{"start": 1902.32, "text": "here we actually", "duration": 4.56, "end": 1906.8799999999999}
+{"start": 1903.679, "text": "have a a kind of like a a group that", "duration": 4.84, "end": 1908.519}
+{"start": 1906.88, "text": "holds together a wrapper that holds", "duration": 3.84, "end": 1910.72}
+{"start": 1908.519, "text": "together this input of what is this", "duration": 5.441, "end": 1913.96}
+{"start": 1910.72, "text": "field and then the actual field so let's", "duration": 6.64, "end": 1917.3600000000001}
+{"start": 1913.96, "text": "let's copy one of these copy this and", "duration": 5.48, "end": 1919.44}
+{"start": 1917.36, "text": "then delete Del this form input and", "duration": 5.799, "end": 1923.1589999999999}
+{"start": 1919.44, "text": "inside put this thing just so that we", "duration": 6.04, "end": 1925.48}
+{"start": 1923.159, "text": "can have this label which we can write", "duration": 6.441, "end": 1929.6000000000001}
+{"start": 1925.48, "text": "here how many people will", "duration": 6.52, "end": 1932.0}
+{"start": 1929.6, "text": "come probably don't need to capitalize", "duration": 4.679, "end": 1934.279}
+{"start": 1932.0, "text": "this and in the select element I can", "duration": 3.84, "end": 1935.84}
+{"start": 1934.279, "text": "under the setting I can choose the", "duration": 3.721, "end": 1938.0}
+{"start": 1935.84, "text": "options right so maybe this one is going", "duration": 6.16, "end": 1942.0}
+{"start": 1938.0, "text": "to say just one person and the value is", "duration": 6.519, "end": 1944.519}
+{"start": 1942.0, "text": "basically what it's going to send to us", "duration": 4.84, "end": 1946.84}
+{"start": 1944.519, "text": "so I do want this just to say one and", "duration": 4.601, "end": 1949.1200000000001}
+{"start": 1946.84, "text": "send one cu of course this can mean", "duration": 4.199, "end": 1951.039}
+{"start": 1949.12, "text": "different things but for me it's just", "duration": 6.12, "end": 1955.2399999999998}
+{"start": 1951.039, "text": "going to be two and two three and three", "duration": 8.48, "end": 1959.519}
+{"start": 1955.24, "text": "and uh four and four maybe let's", "duration": 8.08, "end": 1963.32}
+{"start": 1959.519, "text": "actually add another option which is", "duration": 6.12, "end": 1965.639}
+{"start": 1963.32, "text": "can't come or something like this can't", "duration": 6.44, "end": 1969.76}
+{"start": 1965.639, "text": "come and the value is not", "duration": 7.201, "end": 1972.84}
+{"start": 1969.76, "text": "coming okay now you can see that these", "duration": 5.48, "end": 1975.24}
+{"start": 1972.84, "text": "fields also have names this is important", "duration": 4.439, "end": 1977.279}
+{"start": 1975.24, "text": "because when we're going to get an email", "duration": 4.399, "end": 1979.639}
+{"start": 1977.279, "text": "when somebody submit this form this is", "duration": 4.321, "end": 1981.6}
+{"start": 1979.639, "text": "what's going to tell us it's going to", "duration": 4.28, "end": 1983.9189999999999}
+{"start": 1981.6, "text": "return something like field n two", "duration": 3.959, "end": 1985.559}
+{"start": 1983.919, "text": "because somebody submitted the value two", "duration": 6.321, "end": 1990.24}
+{"start": 1985.559, "text": "under field n so here let's call this um", "duration": 8.321, "end": 1993.8799999999999}
+{"start": 1990.24, "text": "you know people", "duration": 5.96, "end": 1996.2}
+{"start": 1993.88, "text": "or how how should we say this like", "duration": 4.48, "end": 1998.3600000000001}
+{"start": 1996.2, "text": "people coming maybe people", "duration": 5.24, "end": 2001.44}
+{"start": 1998.36, "text": "coming that's okay let's see what the", "duration": 5.64, "end": 2004.0}
+{"start": 2001.44, "text": "the names of these fields are contact", "duration": 5.04, "end": 2006.48}
+{"start": 2004.0, "text": "name now I'm just going to write here", "duration": 4.279, "end": 2008.279}
+{"start": 2006.48, "text": "name under", "duration": 4.96, "end": 2011.44}
+{"start": 2008.279, "text": "email um remove the contact one so just", "duration": 6.841, "end": 2015.12}
+{"start": 2011.44, "text": "email this one we know people coming and", "duration": 6.4, "end": 2017.8400000000001}
+{"start": 2015.12, "text": "this is going to be just message I'm", "duration": 5.799, "end": 2020.9189999999999}
+{"start": 2017.84, "text": "just going to remove the contact one and", "duration": 5.439, "end": 2023.279}
+{"start": 2020.919, "text": "then I don't need this terms and T so", "duration": 4.321, "end": 2025.24}
+{"start": 2023.279, "text": "I'm just going to delete this whole", "duration": 4.841, "end": 2028.12}
+{"start": 2025.24, "text": "thing we don't need this okay so I think", "duration": 5.0, "end": 2030.24}
+{"start": 2028.12, "text": "the form is ready actually when I'm", "duration": 4.76, "end": 2032.8799999999999}
+{"start": 2030.24, "text": "selecting the whole form here under the", "duration": 5.439, "end": 2035.679}
+{"start": 2032.88, "text": "setting I can actually see you know a", "duration": 4.039, "end": 2036.919}
+{"start": 2035.679, "text": "different settings here first of all", "duration": 2.6, "end": 2038.279}
+{"start": 2036.919, "text": "what is the name of the form I'm going", "duration": 4.0, "end": 2040.919}
+{"start": 2038.279, "text": "to call this RSVP", "duration": 5.64, "end": 2043.919}
+{"start": 2040.919, "text": "form and I've got all of these form", "duration": 5.24, "end": 2046.159}
+{"start": 2043.919, "text": "fields that is correct now this is", "duration": 3.48, "end": 2047.3990000000001}
+{"start": 2046.159, "text": "what's going to happen when people", "duration": 3.801, "end": 2049.96}
+{"start": 2047.399, "text": "submit this now currently we're doing", "duration": 3.96, "end": 2051.359}
+{"start": 2049.96, "text": "something very simple which is just", "duration": 3.639, "end": 2053.599}
+{"start": 2051.359, "text": "sending a an email when somebody submits", "duration": 4.52, "end": 2055.879}
+{"start": 2053.599, "text": "a form of course we can do something", "duration": 4.76, "end": 2058.3590000000004}
+{"start": 2055.879, "text": "more advanced to sync to like a database", "duration": 5.0, "end": 2060.879}
+{"start": 2058.359, "text": "that checks if this person is invited", "duration": 4.441, "end": 2062.7999999999997}
+{"start": 2060.879, "text": "and Mark yes no we can do something more", "duration": 3.52, "end": 2064.399}
+{"start": 2062.8, "text": "elaborate but I'm keeping things really", "duration": 3.76, "end": 2066.5600000000004}
+{"start": 2064.399, "text": "simple here just send an email right now", "duration": 5.401, "end": 2069.7999999999997}
+{"start": 2066.56, "text": "it's sending an email to to myself but", "duration": 6.16, "end": 2072.72}
+{"start": 2069.8, "text": "um of course I can add here an email of", "duration": 5.559, "end": 2075.3590000000004}
+{"start": 2072.72, "text": "clients or somebody else so for now just", "duration": 5.0, "end": 2077.72}
+{"start": 2075.359, "text": "send an email to me when it's yeah when", "duration": 5.441, "end": 2080.7999999999997}
+{"start": 2077.72, "text": "it's submitted that's great and uh we", "duration": 5.28, "end": 2083.0}
+{"start": 2080.8, "text": "can see here success message so this is", "duration": 4.039, "end": 2084.8390000000004}
+{"start": 2083.0, "text": "what's going to look like after somebody", "duration": 3.72, "end": 2086.72}
+{"start": 2084.839, "text": "submits thank you submission has been", "duration": 4.0, "end": 2088.839}
+{"start": 2086.72, "text": "received or error if for some reason", "duration": 3.56, "end": 2090.2799999999997}
+{"start": 2088.839, "text": "something didn't work of course we can", "duration": 4.28, "end": 2093.119}
+{"start": 2090.28, "text": "style and edit these and uh yeah I think", "duration": 6.52, "end": 2096.8}
+{"start": 2093.119, "text": "the form is actually ready right now", "duration": 5.081, "end": 2098.2000000000003}
+{"start": 2096.8, "text": "let's preview this", "duration": 3.24, "end": 2100.04}
+{"start": 2098.2, "text": "just so that we can see we can typee", "duration": 4.0, "end": 2102.2}
+{"start": 2100.04, "text": "here and we can choose here from the", "duration": 5.559, "end": 2105.599}
+{"start": 2102.2, "text": "drop- down menu um so this is working", "duration": 6.879, "end": 2109.0789999999997}
+{"start": 2105.599, "text": "and we're going to try this in a minute", "duration": 6.081, "end": 2111.6800000000003}
+{"start": 2109.079, "text": "of course we can go ahead and um adjust", "duration": 5.04, "end": 2114.119}
+{"start": 2111.68, "text": "the footer as well but you've basically", "duration": 5.8, "end": 2117.48}
+{"start": 2114.119, "text": "seen how I've did that before so it's", "duration": 6.401, "end": 2120.52}
+{"start": 2117.48, "text": "more interesting to me to add a little", "duration": 5.84, "end": 2123.32}
+{"start": 2120.52, "text": "bit of interactions to the website right", "duration": 4.28, "end": 2124.8}
+{"start": 2123.32, "text": "now so let's let's make this a little", "duration": 4.039, "end": 2127.3590000000004}
+{"start": 2124.8, "text": "bit more like sexy where things like", "duration": 4.64, "end": 2129.44}
+{"start": 2127.359, "text": "fade in as we're loading and and stuff", "duration": 3.841, "end": 2131.2}
+{"start": 2129.44, "text": "like this so the first thing I want to", "duration": 7.56, "end": 2137.0}
+{"start": 2131.2, "text": "do is maybe pick this uh this whole text", "duration": 8.0, "end": 2139.2}
+{"start": 2137.0, "text": "area now basically I can select just you", "duration": 4.44, "end": 2141.44}
+{"start": 2139.2, "text": "know this heading or this or the button", "duration": 4.0, "end": 2143.2}
+{"start": 2141.44, "text": "but you can see that they are grouped", "duration": 4.32, "end": 2145.76}
+{"start": 2143.2, "text": "together inside of this it's called Max", "duration": 4.28, "end": 2147.48}
+{"start": 2145.76, "text": "with large that's basically the the", "duration": 4.839, "end": 2150.599}
+{"start": 2147.48, "text": "style or basically this whole thing here", "duration": 5.72, "end": 2153.2}
+{"start": 2150.599, "text": "is grouping the whole text together so", "duration": 5.48, "end": 2156.079}
+{"start": 2153.2, "text": "let's animate this here under the", "duration": 4.8, "end": 2158.0}
+{"start": 2156.079, "text": "interactions I can go ahead ahead and", "duration": 4.04, "end": 2160.119}
+{"start": 2158.0, "text": "create an element Trigger or a page", "duration": 5.0, "end": 2163.0}
+{"start": 2160.119, "text": "trigger basically we want when the page", "duration": 6.2, "end": 2166.319}
+{"start": 2163.0, "text": "is loading or basically this gets into", "duration": 5.76, "end": 2168.76}
+{"start": 2166.319, "text": "the view we want this to fade in so", "duration": 4.841, "end": 2171.16}
+{"start": 2168.76, "text": "let's add something like scroll into", "duration": 4.079, "end": 2172.8390000000004}
+{"start": 2171.16, "text": "view now this is actually not going to", "duration": 3.199, "end": 2174.359}
+{"start": 2172.839, "text": "scroll into view because it's just going", "duration": 3.0, "end": 2175.839}
+{"start": 2174.359, "text": "to be here when we're loading but that's", "duration": 3.361, "end": 2177.72}
+{"start": 2175.839, "text": "what we want to do right now and what we", "duration": 4.0, "end": 2179.839}
+{"start": 2177.72, "text": "can do when it's scrolling into the view", "duration": 4.0, "end": 2181.72}
+{"start": 2179.839, "text": "we can either create a custom animation", "duration": 4.24, "end": 2184.0789999999997}
+{"start": 2181.72, "text": "we've got a lot of very cool pre um you", "duration": 4.48, "end": 2186.2}
+{"start": 2184.079, "text": "know readymade animation for us in this", "duration": 4.321, "end": 2188.4}
+{"start": 2186.2, "text": "case let's choose the slide", "duration": 4.2, "end": 2190.3999999999996}
+{"start": 2188.4, "text": "and you can preview this is how it's", "duration": 3.48, "end": 2191.88}
+{"start": 2190.4, "text": "going to animate from the left let's", "duration": 4.6, "end": 2195.0}
+{"start": 2191.88, "text": "choose from the bottom yeah this is nice", "duration": 5.52, "end": 2197.4}
+{"start": 2195.0, "text": "okay so I'm happy with this and I also", "duration": 6.04, "end": 2201.04}
+{"start": 2197.4, "text": "want to animate maybe this header image", "duration": 5.4, "end": 2202.8}
+{"start": 2201.04, "text": "here I'm going to do the same but I want", "duration": 4.16, "end": 2205.2}
+{"start": 2202.8, "text": "first the text and then the image so", "duration": 4.48, "end": 2207.28}
+{"start": 2205.2, "text": "let's add another scroll into view to", "duration": 5.879, "end": 2211.0789999999997}
+{"start": 2207.28, "text": "this slide from the bottom but for this", "duration": 7.64, "end": 2214.92}
+{"start": 2211.079, "text": "I'm going to add like a 300 milliseconds", "duration": 6.52, "end": 2217.599}
+{"start": 2214.92, "text": "delay to this let's see what happens now", "duration": 5.199, "end": 2220.119}
+{"start": 2217.599, "text": "if I preview so now you can see that", "duration": 4.441, "end": 2222.04}
+{"start": 2220.119, "text": "we've got the text sliding in and then", "duration": 4.72, "end": 2224.839}
+{"start": 2222.04, "text": "the image sliding in and that's nice", "duration": 6.48, "end": 2228.52}
+{"start": 2224.839, "text": "right that gives like a nice feel when", "duration": 5.961, "end": 2230.7999999999997}
+{"start": 2228.52, "text": "we're loading this website and we can go", "duration": 5.88, "end": 2234.4}
+{"start": 2230.8, "text": "ahead and add more stuff for example", "duration": 6.12, "end": 2236.92}
+{"start": 2234.4, "text": "here let's let's make them trigger like", "duration": 4.959, "end": 2239.359}
+{"start": 2236.92, "text": "scroll one 2 3 when we're loading here", "duration": 5.72, "end": 2242.64}
+{"start": 2239.359, "text": "so let's do the same here element um", "duration": 6.0, "end": 2245.359}
+{"start": 2242.64, "text": "element when it's scrolling into view", "duration": 5.76, "end": 2248.4}
+{"start": 2245.359, "text": "slide up like we did did previously the", "duration": 5.361, "end": 2250.72}
+{"start": 2248.4, "text": "first one doesn't need a delay you can", "duration": 6.56, "end": 2254.96}
+{"start": 2250.72, "text": "just go ahead and slide second one let's", "duration": 8.16, "end": 2258.8799999999997}
+{"start": 2254.96, "text": "add scrolling to view", "duration": 7.8, "end": 2262.76}
+{"start": 2258.88, "text": "slide from the bottom and let's add a 30", "duration": 6.6, "end": 2265.48}
+{"start": 2262.76, "text": "milliseconds delay and then the third", "duration": 7.96, "end": 2270.7200000000003}
+{"start": 2265.48, "text": "one let's pick the third one scroll to", "duration": 10.28, "end": 2275.76}
+{"start": 2270.72, "text": "view um slide from the bottom and let's", "duration": 7.44, "end": 2278.16}
+{"start": 2275.76, "text": "do 600 so basically will'll have this", "duration": 4.24, "end": 2280.0}
+{"start": 2278.16, "text": "one and then this one and then this one", "duration": 3.959, "end": 2282.1189999999997}
+{"start": 2280.0, "text": "it will create kind of like a staggering", "duration": 4.599, "end": 2284.599}
+{"start": 2282.119, "text": "effect let's see if this works so let's", "duration": 4.801, "end": 2286.92}
+{"start": 2284.599, "text": "preview this and now we're scrolling you", "duration": 5.161, "end": 2289.76}
+{"start": 2286.92, "text": "see T maybe it was actually too early", "duration": 4.679, "end": 2291.599}
+{"start": 2289.76, "text": "maybe we need to also give it a little", "duration": 3.16, "end": 2292.92}
+{"start": 2291.599, "text": "bit of a", "duration": 4.041, "end": 2295.6400000000003}
+{"start": 2292.92, "text": "delay to the first one we can go ahead", "duration": 5.76, "end": 2298.6800000000003}
+{"start": 2295.64, "text": "and play around with this forever but as", "duration": 4.92, "end": 2300.56}
+{"start": 2298.68, "text": "you can see this is really nice and it's", "duration": 5.08, "end": 2303.7599999999998}
+{"start": 2300.56, "text": "really easy to add really cool effects", "duration": 6.48, "end": 2307.04}
+{"start": 2303.76, "text": "and animations into our webflow website", "duration": 5.8, "end": 2309.5600000000004}
+{"start": 2307.04, "text": "last I want to make sure that this looks", "duration": 4.88, "end": 2311.92}
+{"start": 2309.56, "text": "great on mobile phones and you can see", "duration": 4.039, "end": 2313.599}
+{"start": 2311.92, "text": "right here at the bottom we've got these", "duration": 3.36, "end": 2315.28}
+{"start": 2313.599, "text": "different break points so this is", "duration": 5.24, "end": 2318.839}
+{"start": 2315.28, "text": "desktop we can go ahead to tablet mobile", "duration": 6.64, "end": 2321.92}
+{"start": 2318.839, "text": "portrait and we can go ahead basically", "duration": 5.041, "end": 2323.88}
+{"start": 2321.92, "text": "everything should be fine because the", "duration": 4.56, "end": 2326.48}
+{"start": 2323.88, "text": "reloom components are already responsive", "duration": 5.12, "end": 2329.0}
+{"start": 2326.48, "text": "and it does look pretty good I can say", "duration": 4.2, "end": 2330.68}
+{"start": 2329.0, "text": "for example well I actually think this", "duration": 4.079, "end": 2333.079}
+{"start": 2330.68, "text": "is a little bit too big so I can go here", "duration": 4.639, "end": 2335.319}
+{"start": 2333.079, "text": "into the styling and make changes for", "duration": 4.721, "end": 2337.8}
+{"start": 2335.319, "text": "example the size is 48 pixels Maybe", "duration": 5.681, "end": 2341.0}
+{"start": 2337.8, "text": "reduces to 35 or something like this now", "duration": 6.0, "end": 2343.8}
+{"start": 2341.0, "text": "it's not going to affect the text on", "duration": 5.56, "end": 2346.56}
+{"start": 2343.8, "text": "desktop but on mobile it's going to be", "duration": 6.88, "end": 2350.6800000000003}
+{"start": 2346.56, "text": "smaller and this one as well let's do 32", "duration": 5.4, "end": 2351.96}
+{"start": 2350.68, "text": "for this", "duration": 5.32, "end": 2356.0}
+{"start": 2351.96, "text": "one yeah I think this looks much better", "duration": 6.72, "end": 2358.68}
+{"start": 2356.0, "text": "okay so with that the design is ready", "duration": 4.4, "end": 2360.4}
+{"start": 2358.68, "text": "and we can go ahead and publish I can go", "duration": 3.96, "end": 2362.64}
+{"start": 2360.4, "text": "ahead and webflow is giving us a free", "duration": 5.08, "end": 2365.48}
+{"start": 2362.64, "text": "domain you can see um it's a webflow", "duration": 5.24, "end": 2367.8799999999997}
+{"start": 2365.48, "text": "doio domain of course for professional", "duration": 4.24, "end": 2369.72}
+{"start": 2367.88, "text": "website we're going to buy a hosting", "duration": 4.28, "end": 2372.1600000000003}
+{"start": 2369.72, "text": "package and you know connect our custom", "duration": 4.359, "end": 2374.0789999999997}
+{"start": 2372.16, "text": "domain but this is already published now", "duration": 3.959, "end": 2376.1189999999997}
+{"start": 2374.079, "text": "this is a fully functional website you", "duration": 4.841, "end": 2378.92}
+{"start": 2376.119, "text": "see wedding websites web flow.io", "duration": 6.121, "end": 2382.2400000000002}
+{"start": 2378.92, "text": "everything here works we can also go", "duration": 6.12, "end": 2385.04}
+{"start": 2382.24, "text": "ahead and test out the form V RSVP form", "duration": 4.599, "end": 2386.839}
+{"start": 2385.04, "text": "oh by the way we did not connect the map", "duration": 3.48, "end": 2388.52}
+{"start": 2386.839, "text": "that requires us to go to Google Maps", "duration": 3.801, "end": 2390.64}
+{"start": 2388.52, "text": "and open up an account it's I'm not", "duration": 3.64, "end": 2392.16}
+{"start": 2390.64, "text": "going to do this right now but it's", "duration": 3.719, "end": 2394.359}
+{"start": 2392.16, "text": "pretty straightforward to connect the", "duration": 5.48, "end": 2397.64}
+{"start": 2394.359, "text": "map as well let's do this name here run", "duration": 7.321, "end": 2401.68}
+{"start": 2397.64, "text": "test and then email not", "duration": 5.84, "end": 2403.48}
+{"start": 2401.68, "text": "myre", "duration": 4.84, "end": 2406.52}
+{"start": 2403.48, "text": "email.com three people are going to come", "duration": 6.4, "end": 2409.88}
+{"start": 2406.52, "text": "and hey I'm testing the", "duration": 9.2, "end": 2415.72}
+{"start": 2409.88, "text": "form all right let's go ahead and see", "duration": 8.32, "end": 2418.2000000000003}
+{"start": 2415.72, "text": "let's go check my email and see if this", "duration": 5.04, "end": 2420.7599999999998}
+{"start": 2418.2, "text": "actually worked on my email I've got", "duration": 5.0, "end": 2423.2}
+{"start": 2420.76, "text": "this email web flow form you've received", "duration": 4.28, "end": 2425.0400000000004}
+{"start": 2423.2, "text": "a new submission you can see here that", "duration": 4.56, "end": 2427.7599999999998}
+{"start": 2425.04, "text": "this is the RSVP form for wedding", "duration": 5.96, "end": 2431.0}
+{"start": 2427.76, "text": "website and you can see name run test", "duration": 5.92, "end": 2433.6800000000003}
+{"start": 2431.0, "text": "email is here people coming three now", "duration": 5.64, "end": 2436.64}
+{"start": 2433.68, "text": "you understand why it was important to", "duration": 5.0, "end": 2438.68}
+{"start": 2436.64, "text": "give name to the form item so that we", "duration": 5.04, "end": 2441.68}
+{"start": 2438.68, "text": "can understand where what message people", "duration": 6.72, "end": 2445.3999999999996}
+{"start": 2441.68, "text": "wrote where so this is it the form works", "duration": 6.24, "end": 2447.9199999999996}
+{"start": 2445.4, "text": "the website works and we have", "duration": 4.48, "end": 2449.88}
+{"start": 2447.92, "text": "successfully built a fully functional", "duration": 4.24, "end": 2452.16}
+{"start": 2449.88, "text": "website super fast I hope this video", "duration": 3.959, "end": 2453.839}
+{"start": 2452.16, "text": "encourages you to build your first", "duration": 3.88, "end": 2456.04}
+{"start": 2453.839, "text": "website of course there's so much more", "duration": 3.881, "end": 2457.72}
+{"start": 2456.04, "text": "to learn about web design to be able to", "duration": 4.48, "end": 2460.52}
+{"start": 2457.72, "text": "create beautiful professional websites", "duration": 4.56, "end": 2462.2799999999997}
+{"start": 2460.52, "text": "but the most important thing is that you", "duration": 3.44, "end": 2463.96}
+{"start": 2462.28, "text": "actually get started and when you're", "duration": 3.64, "end": 2465.92}
+{"start": 2463.96, "text": "ready to level up make sure you check", "duration": 4.24, "end": 2468.2}
+{"start": 2465.92, "text": "out our food courses or our other videos", "duration": 6.0, "end": 2471.92}
+{"start": 2468.2, "text": "on this channel see you next time", "duration": 3.72, "end": 2471.9199999999996}

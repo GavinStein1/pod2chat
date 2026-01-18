@@ -1,6 +1,6 @@
 # Pod2Chat
 
-A Python project template.
+A Python application for indexing YouTube videos and chatting about them using RAG (Retrieval-Augmented Generation).
 
 ## Installation
 
@@ -10,13 +10,55 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+## Configuration
+
+Create a `.env` file in the project root with your API keys (e.g., OpenAI API key for embeddings and chat functionality).
+
 ## Usage
 
-Run the main module:
+The application is accessed through `src/main.py` with two main commands:
+
+### Index a YouTube Video
+
+Index a YouTube video by fetching its transcript, chunking it, generating embeddings, and creating a vector store:
 
 ```bash
-python -m src.main
+python -m src.main index <YOUTUBE_URL>
 ```
+
+Example:
+```bash
+python -m src.main index https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+This will:
+- Fetch the video transcript
+- Chunk the transcript into fine and coarse segments
+- Generate embeddings for all chunks
+- Store chunks in a vector database
+- Generate a markdown summary
+
+Output files are saved in an `output_<VIDEO_ID>/` directory.
+
+### Chat About a Video
+
+Start an interactive chat session about an indexed video:
+
+```bash
+python -m src.main chat <YOUTUBE_URL>
+```
+
+Example:
+```bash
+python -m src.main chat https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+If the video hasn't been indexed yet, you'll be prompted to index it first.
+
+During the chat session:
+- Type your questions to ask about the video content
+- Use `/help` to see available commands
+- Use `/exit` or `/quit` to exit the chat
 
 ## Development
 
@@ -38,7 +80,13 @@ pytest
 pod2chat/
 ├── src/              # Source code
 │   ├── __init__.py
-│   └── main.py       # Main entry point
+│   ├── main.py       # Main entry point (CLI interface)
+│   ├── youtube_client.py
+│   ├── chunk.py
+│   ├── summarizer.py
+│   ├── embedder.py
+│   ├── vector_store.py
+│   └── rag_chat.py
 ├── tests/            # Test files
 │   ├── __init__.py
 │   └── test_main.py

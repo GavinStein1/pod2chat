@@ -64,7 +64,6 @@ Only identify topics that are clearly present in the chunks. Do not invent topic
 Constraints:
 - Return exactly 5-8 topics (fewer if insufficient content, more if highly varied)
 - Each topic must be a 2-5 word phrase describing the theme
-- Each topic must appear in at least 2 chunks to ensure it's a substantial theme
 - Return a JSON array of topic strings only (no descriptions)
 
 Chunks:
@@ -74,6 +73,41 @@ Example output format:
 ["Productivity Techniques", "Time Management", "Goal Setting", "Work-Life Balance", "Habit Formation"]
 
 Return a JSON list of topic names (strings only, no descriptions)."""
+
+TOPIC_STREAM_SYSTEM_MESSAGE = """You are a careful topic classifier.
+You must only use topics that are clearly supported by the chunk. 
+Each chunk is from a video transcript titled "{title}".
+Prefer assigning to an existing topic if it reasonably fits.
+If none fit, create a new 2-5 word topic. The topic name must be useful to the kind of reader who would be watching the video.
+The topic name must be specific to the video and the content of the chunk.
+If the chunk does not contain information that is substantive, informative or actionable, do not create a topic for it. Assign it to topic -1. An example is greetings, intros/outros, etc.
+Return ONLY valid JSON, no markdown, no extra text."""
+
+TOPIC_STREAM_PROMPT = """Current topics (indexed):
+{topics_indexed}
+
+Chunk:
+[{start}-{end}] {text}
+
+Decide whether this chunk fits an existing topic or requires a new topic.
+
+Rules:
+- Prefer existing topics when reasonable
+- If creating, topic_name must be 2-5 words, specific, and present in the chunk
+- Do NOT invent themes not in the chunk
+- Output JSON ONLY in one of these forms:
+
+Assign:
+{{"action":"assign","topic_index":2}}
+
+Create:
+{{"action":"create","topic_name":"A valid topic name"}}
+
+Example output format:
+{{"action":"assign","topic_index":2}} - The chunk fits an existing topic
+{{"action":"create","topic_name":"A valid topic name"}} - The chunk contains information that is substantive, informative or actionable
+{{"action":"assign","topic_index":-1}} - The chunk does not contain information that is substantive, informative or actionable
+"""
 
 # ============================================================================
 # Executive Synopsis Prompts
@@ -131,6 +165,8 @@ Focus on clarity and actionability - make insights concrete and implementable, n
 
 DEEP_DIVE_BASE_PROMPT_TEMPLATE = """Analyze the following transcript segments about "{topic}" and extract structured insights with emphasis on clarity and actionability.
 
+The goal of this exercise is to condense the transcript into actionable insights that a professional in the relevant field would find useful and should apply to their own work.
+
 Analysis process (think step by step):
 1. First, identify key claims and the reasoning behind them - make these specific and clear
 2. Then, extract examples and stories that illustrate these points - include concrete details
@@ -157,6 +193,10 @@ Transcript segments:
 Example structure (showing clear, actionable insights):
 ### Productivity Techniques
 
+**Practical Takeaways:**
+- [00:28:20] Start by blocking 2-3 hours daily for deep work in the morning, then expand gradually to 4-6 hours as you build the habit
+- [00:29:15] Use a timer set to your block duration and stop immediately when it goes off - this enforces boundaries and prevents overrunning
+
 **Key Claims + Reasoning:**
 - [00:15:23] Eliminating distractions increases focus because multitasking reduces effectiveness by up to 40% according to research cited
 - [00:18:45] Time-blocking works because it creates clear boundaries and prevents task switching, which drains mental energy
@@ -169,12 +209,11 @@ Example structure (showing clear, actionable insights):
 - [00:25:45] This method requires 2-3 weeks of discipline to form the habit and may not work for people who need frequent interruptions
 - [00:27:10] Some creative tasks need flexibility - use time-blocking for focused work, but leave 1-2 hour blocks open for exploratory work
 
-**Practical Takeaways:**
-- [00:28:20] Start by blocking 2-3 hours daily for deep work in the morning, then expand gradually to 4-6 hours as you build the habit
-- [00:29:15] Use a timer set to your block duration and stop immediately when it goes off - this enforces boundaries and prevents overrunning
-
 Format as:
 ### {topic}
+
+**Practical Takeaways:**
+- [HH:MM:SS] Actionable step someone can implement (include specifics: numbers, timeframes, methods)...
 
 **Key Claims + Reasoning:**
 - [HH:MM:SS] Clear, specific claim with concrete reasoning...
@@ -184,9 +223,6 @@ Format as:
 
 **Counterpoints / Nuance:**
 - [HH:MM:SS] Practical limitation or nuance with specific context...
-
-**Practical Takeaways:**
-- [HH:MM:SS] Actionable step someone can implement (include specifics: numbers, timeframes, methods)...
 
 ONLY use information explicitly stated in the transcript. Verify all timestamps match the provided segments. Prioritize clarity and actionability throughout."""
 

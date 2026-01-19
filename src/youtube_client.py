@@ -1,5 +1,5 @@
 from youtube_transcript_api import YouTubeTranscriptApi, FetchedTranscript
-from pytube import YouTube
+from pytubefix import YouTube
 from typing import Dict, Any
 
 
@@ -13,7 +13,7 @@ class YoutubeClient:
 
     def get_video_metadata(self, video_id: str, url: str = None) -> Dict[str, Any]:
         """
-        Get video metadata using pytube.
+        Get video metadata using pytubefix.
         Returns: title, channel, duration (seconds), URL
         """
         try:
@@ -21,7 +21,6 @@ class YoutubeClient:
                 yt = YouTube(url)
             else:
                 yt = YouTube(f"https://www.youtube.com/watch?v={video_id}")
-            
             return {
                 "title": yt.title,
                 "channel": yt.author,
@@ -29,7 +28,8 @@ class YoutubeClient:
                 "url": f"https://www.youtube.com/watch?v={video_id}",
             }
         except Exception as e:
-            # Fallback to basic info if pytube fails
+            # Fallback to basic info if pytubefix fails
+            print(f"Warning: Failed to get video metadata: {e}")
             return {
                 "title": "Unknown",
                 "channel": "Unknown",

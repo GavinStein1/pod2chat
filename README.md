@@ -96,3 +96,9 @@ pod2chat/
 ├── .gitignore        # Git ignore rules
 └── README.md         # This file
 ```
+TODO: 
+ - Fix summariser deep dive
+    1. Get topics - sliding window technique where a topic for the first window, slide through chunks until topic change. Mark chunks under a respective topic 
+    2. Build ex synopsis
+    3. For each topic, extract actionable insights that should be applied in a professional capacity. THings that should be remembered that would make the reader more productive, or have a higher quality output??
+    4. 

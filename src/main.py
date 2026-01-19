@@ -2,7 +2,7 @@
 
 from youtube_client import YoutubeClient
 from chunk import chunk_transcript_two_tier
-from summarizer import Summarizer
+from summariser import Summariser
 from embedder import Embedder
 from vector_store import VectorStore
 from rag_chat import RAGChat
@@ -23,7 +23,7 @@ def extract_video_id(url: str) -> str:
     return url.split("/")[-1].split("?")[0]
 
 
-def index_video(url: str) -> None:
+def index_video(url: str, verbose: bool = False) -> None:
     """Index a video: fetch transcript, chunk, embed, and store."""
     print("Welcome to Pod2Chat!")
     print(f"Indexing video: {url}")
@@ -32,15 +32,21 @@ def index_video(url: str) -> None:
     video_id = extract_video_id(url)
 
     # 2. Get the transcript from the video
+    if verbose:
+        print("  Step 1: Fetching transcript from YouTube...")
     client = YoutubeClient()
 
     try:
         transcript = client.get_transcript(video_id)
+        if verbose:
+            print(f"  ✓ Transcript fetched: {len(transcript)} segments")
     except Exception as e:
         print("Could not fetch transcript for your video. Please check the video id and try again.")
         return
 
     # 3. parse transcript
+    if verbose:
+        print("  Step 2: Parsing transcript segments...")
     jsonl_text = ""
     raw_segments = []
     for entry in transcript:
@@ -52,8 +58,12 @@ def index_video(url: str) -> None:
         }
         jsonl_text += json.dumps(entry_dict) + "\n"
         raw_segments.append(entry_dict)
+    if verbose:
+        print(f"  ✓ Parsed {len(raw_segments)} segments")
 
     # 4. Create output folder and write transcript
+    if verbose:
+        print("  Step 3: Creating output directory...")
     output_folder = f"output_{video_id}"
     os.makedirs(output_folder, exist_ok=True)
     
@@ -63,13 +73,21 @@ def index_video(url: str) -> None:
     print(f"Transcript saved to {output_folder}/transcript.jsonl")
 
     # 5. chunk transcript
+    if verbose:
+        print("  Step 4: Chunking transcript into fine and coarse tiers...")
     print("Chunking transcript...")
     chunks = chunk_transcript_two_tier(raw_segments)
+    if verbose:
+        fine_count = len(chunks.get("fine", []))
+        coarse_count = len(chunks.get("coarse", []))
+        print(f"  ✓ Created {fine_count} fine chunks and {coarse_count} coarse chunks")
     print(f"Chunks saved to {output_folder}/chunks.jsonl")
     with open(f"{output_folder}/chunks.jsonl", "w") as f:
         json.dump(chunks, f)
     
     # 6. Generate embeddings and store in vector store
+    if verbose:
+        print("  Step 5: Generating embeddings for chunks...")
     print("Generating embeddings and storing in vector store...")
     try:
         # Initialize embedder
@@ -85,11 +103,17 @@ def index_video(url: str) -> None:
         
         # Generate embeddings for all chunks
         chunks_with_embeddings = embedder.embed_chunks(all_chunks)
+        if verbose:
+            print(f"  ✓ Generated embeddings for {len(chunks_with_embeddings)} chunks")
         
         # Store in vector store (with URL)
         db_path = f"{output_folder}/chunks.db"
+        if verbose:
+            print("  Step 6: Storing chunks in vector database...")
         with VectorStore(db_path) as store:
             store.insert_chunks(chunks_with_embeddings, video_id, url)
+        if verbose:
+            print(f"  ✓ Vector store created with {len(chunks_with_embeddings)} chunks")
         
         print(f"Vector store saved to {db_path}")
     except Exception as e:
@@ -97,16 +121,23 @@ def index_video(url: str) -> None:
         print("Continuing without embeddings...")
 
     # 7. Generate markdown summary
+    if verbose:
+        print("  Step 7: Generating markdown summary...")
     print("Generating markdown summary...")
     try:
         # Get video metadata
+        if verbose:
+            print("    Fetching video metadata...")
         metadata = client.get_video_metadata(video_id, url)
+        if verbose:
+            print(f"    Title: {metadata.get('title', 'N/A')}")
+            print(f"    Channel: {metadata.get('channel', 'N/A')}")
         
         # Initialize summarizer
-        summarizer = Summarizer()
+        summariser = Summariser(verbose=verbose)
         
         # Generate summary
-        summary_markdown = summarizer.generate_summary(chunks, metadata, raw_segments)
+        summary_markdown = summariser.generate_summary(chunks, metadata, raw_segments)
         
         # Write summary to file
         summary_path = f"{output_folder}/summary.md"
@@ -121,8 +152,10 @@ def index_video(url: str) -> None:
     print(f"\nVideo indexed successfully! You can now chat about it using: pod2chat chat {url}")
 
 
-def chat_video(url: str) -> None:
+def chat_video(url: str, verbose: bool = False) -> None:
     """Start interactive chat about a video."""
+    if verbose:
+        print("Initializing chat session...")
     video_id = extract_video_id(url)
     output_folder = f"output_{video_id}"
     db_path = f"{output_folder}/chunks.db"
@@ -133,7 +166,7 @@ def chat_video(url: str) -> None:
         response = input().strip().lower()
         if response in ["", "y", "yes"]:
             print("\nIndexing video first...")
-            index_video(url)
+            index_video(url, verbose=verbose)
             print("\nStarting chat...\n")
         else:
             print("Exiting. Please index the video first using: pod2chat index <URL>")
@@ -141,7 +174,11 @@ def chat_video(url: str) -> None:
     
     # Initialize RAG chat
     try:
-        rag_chat = RAGChat(db_path, url)
+        if verbose:
+            print(f"  Loading vector store from {db_path}...")
+        rag_chat = RAGChat(db_path, url, verbose=verbose)
+        if verbose:
+            print("  ✓ RAG chat initialized")
     except Exception as e:
         print(f"Error initializing chat: {e}")
         return
@@ -149,6 +186,7 @@ def chat_video(url: str) -> None:
     print(f"Chatting about video: {url}")
     print("Type your questions (or '/exit' to quit, '/help' for help)\n")
     
+    result = None  # Initialize to track last result
     try:
         while True:
             # Get user input
@@ -159,8 +197,9 @@ def chat_video(url: str) -> None:
             
             # Handle commands
             if query.lower() in ["/exit", "/quit"]:
-                print(f"\nToken usage: {result['input_tokens']:,} input, {result['output_tokens']:,} output")
-                print(f"Cost: ${result['total_cost']:.6f} (input: ${result['input_cost']:.6f}, output: ${result['output_cost']:.6f})")
+                if result:
+                    print(f"\nToken usage: {result['input_tokens']:,} input, {result['output_tokens']:,} output")
+                    print(f"Cost: ${result['total_cost']:.6f} (input: ${result['input_cost']:.6f}, output: ${result['output_cost']:.6f})")
                 print("Goodbye!")
                 break
             elif query.lower() == "/help":
@@ -171,6 +210,8 @@ def chat_video(url: str) -> None:
             
             # Process query
             try:
+                if verbose:
+                    print(f"\n  Processing query: '{query}'...")
                 result = rag_chat.chat(query)
                 
                 # Display response
@@ -182,6 +223,9 @@ def chat_video(url: str) -> None:
                     print(f"\nSources: {sources_str}")
                 
                 # Display token usage and cost
+                if verbose:
+                    print(f"  Token usage: {result['input_tokens']:,} input, {result['output_tokens']:,} output")
+                    print(f"  Cost: ${result['total_cost']:.6f}")
                 print()
                 
             except Exception as e:
@@ -189,8 +233,9 @@ def chat_video(url: str) -> None:
                 print(f"Error: {e}\n")
                 
     except KeyboardInterrupt:
-        print(f"\nToken usage: {result['input_tokens']:,} input, {result['output_tokens']:,} output")
-        print(f"Cost: ${result['total_cost']:.6f} (input: ${result['input_cost']:.6f}, output: ${result['output_cost']:.6f})")
+        if result:
+            print(f"\nToken usage: {result['input_tokens']:,} input, {result['output_tokens']:,} output")
+            print(f"Cost: ${result['total_cost']:.6f} (input: ${result['input_cost']:.6f}, output: ${result['output_cost']:.6f})")
         print("\n\nGoodbye!")
     finally:
         rag_chat.close()
@@ -208,17 +253,19 @@ def main():
     # Index command
     index_parser = subparsers.add_parser("index", help="Index a YouTube video")
     index_parser.add_argument("url", help="YouTube video URL")
+    index_parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     
     # Chat command
     chat_parser = subparsers.add_parser("chat", help="Chat about a YouTube video")
     chat_parser.add_argument("url", help="YouTube video URL")
+    chat_parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     
     args = parser.parse_args()
     
     if args.command == "index":
-        index_video(args.url)
+        index_video(args.url, verbose=args.verbose)
     elif args.command == "chat":
-        chat_video(args.url)
+        chat_video(args.url, verbose=args.verbose)
     else:
         parser.print_help()
 

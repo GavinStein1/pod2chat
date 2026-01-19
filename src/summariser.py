@@ -12,7 +12,7 @@ import os
 import time
 import math
 from collections import deque
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 from openai import OpenAI
 from openai import BadRequestError
 from chunk import format_ts, simple_token_count
@@ -28,6 +28,8 @@ from prompts import (
     FRAMEWORK_EXTRACTION_BASE_PROMPT,
     HIERARCHICAL_MERGE_SYSTEM_MESSAGE,
     HIERARCHICAL_MERGE_BASE_PROMPT,
+    TOPIC_STREAM_SYSTEM_MESSAGE,
+    TOPIC_STREAM_PROMPT,
 )
 
 # Try to import tiktoken for accurate token counting
@@ -38,13 +40,17 @@ except ImportError:
     TIKTOKEN_AVAILABLE = False
 
 
-class Summarizer:
+class Summariser:
     """Multi-pass summarisation engine with OpenAI API."""
 
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, verbose: bool = False):
         """
         Initialize summarizer with OpenAI API key.
         If not provided, will try to get from OPENAI_API_KEY environment variable.
+        
+        Args:
+            api_key: OpenAI API key (optional)
+            verbose: Enable verbose output for debugging
         """
         api_key = api_key or os.getenv("OPENAI_API_KEY")
         if not api_key:
@@ -54,6 +60,7 @@ class Summarizer:
             )
         self.client = OpenAI(api_key=api_key)
         self.model = "gpt-5-nano"  # Cost-effective model
+        self.verbose = verbose
         self._tokenizer = None
         if TIKTOKEN_AVAILABLE:
             try:
@@ -97,7 +104,11 @@ class Summarizer:
 
         # Pass 1: Extract topics from coarse chunks
         print("  Pass 1: Extracting topics...")
-        topics = self._extract_topics(coarse_chunks)
+        if self.verbose:
+            print(f"    Analyzing {len(coarse_chunks)} coarse chunks for topic extraction...")
+        topics, chunk_to_topic = self._extract_topics(coarse_chunks, metadata)
+        if self.verbose:
+            print(f"    ✓ Extracted {len(topics)} topics: {', '.join(topics[:5])}{'...' if len(topics) > 5 else ''}")
 
         # Build markdown sections
         markdown_parts = []
@@ -107,24 +118,48 @@ class Summarizer:
 
         # Executive Synopsis
         print("  Pass 2: Generating executive synopsis...")
+        if self.verbose:
+            print(f"    Generating synopsis from {len(coarse_chunks)} coarse chunks...")
         markdown_parts.append(self._build_executive_synopsis(coarse_chunks, raw_segments))
+        if self.verbose:
+            print("    ✓ Executive synopsis generated")
 
         # Topic Map
-        markdown_parts.append(self._build_topic_map(coarse_chunks, topics))
+        if self.verbose:
+            print("  Building topic map...")
+        markdown_parts.append(self._build_topic_map(coarse_chunks, topics, chunk_to_topic))
+        if self.verbose:
+            print("    ✓ Topic map generated")
 
         # Deep Dive
         print("  Pass 3: Generating deep dive notes...")
-        markdown_parts.append(self._build_deep_dive(topics, coarse_chunks, fine_chunks, raw_segments))
+        if self.verbose:
+            print(f"    Processing {len(topics)} topics with {len(fine_chunks)} fine chunks...")
+        markdown_parts.append(self._build_deep_dive(topics, coarse_chunks, chunk_to_topic, fine_chunks, raw_segments))
+        if self.verbose:
+            print("    ✓ Deep dive notes generated")
 
         # Frameworks
         print("  Extracting frameworks...")
+        if self.verbose:
+            print("    Searching for actionable frameworks and checklists...")
         markdown_parts.append(self._build_frameworks(coarse_chunks, fine_chunks, raw_segments))
+        if self.verbose:
+            print("    ✓ Framework extraction completed")
 
         # Quotes
-        markdown_parts.append(self._build_quotes(raw_segments))
+        # if self.verbose:
+        #     print("  Extracting memorable quotes...")
+        # markdown_parts.append(self._build_quotes(raw_segments))
+        # if self.verbose:
+        #     print("    ✓ Quotes extracted")
 
         # Listening Paths
-        markdown_parts.append(self._build_listening_paths(coarse_chunks))
+        # if self.verbose:
+        #     print("  Building listening paths...")
+        # markdown_parts.append(self._build_listening_paths(coarse_chunks))
+        # if self.verbose:
+        #     print("    ✓ Listening paths generated")
 
         # Calculate and print cost summary
         cost_info = self._calculate_cost()
@@ -344,6 +379,8 @@ class Summarizer:
             if wait_time > 0:
                 # Add small buffer to avoid edge cases
                 wait_time += 0.1
+                if self.verbose:
+                    print(f"    Rate limit: {tokens_used:,}/{self._max_tpm:,} tokens, {requests_count}/{self._max_rpm} requests")
                 print(f"    Rate limit approaching, waiting {wait_time:.1f}s...")
                 time.sleep(wait_time)
                 
@@ -433,8 +470,10 @@ class Summarizer:
         # Check if we can fit all chunks in one request
         if self._can_fit_in_single_request(chunks, base_prompt):
             # Try single request first
+            if self.verbose:
+                print(f"    Processing {len(chunks)} chunks in single request...")
             try:
-                chunk_texts = [f"[{format_ts(c['start'])}-{format_ts(c['end'])}] {c['text']}" for c in chunks]
+                chunk_texts = [f"[{format_ts(c['start'])}]-[{format_ts(c['end'])}] {c['text']}" for c in chunks]
                 # Handle both {chunks} placeholder and direct formatting
                 if "{chunks}" in base_prompt:
                     prompt = base_prompt.format(chunks=chr(10).join(chunk_texts))
@@ -467,15 +506,23 @@ class Summarizer:
                 
                 self._record_request(input_tokens, output_tokens)
                 
+                if self.verbose:
+                    print(f"    ✓ Single request completed ({input_tokens:,} input, {output_tokens:,} output tokens)")
+                
                 return response.choices[0].message.content.strip()
             except BadRequestError as e:
                 if "context_length_exceeded" in str(e).lower():
-                    print(f"    Context limit exceeded, falling back to batching...")
+                    if self.verbose:
+                        print(f"    Context limit exceeded ({len(chunks)} chunks), falling back to batching...")
+                    else:
+                        print(f"    Context limit exceeded, falling back to batching...")
                 else:
                     raise
         
         # Need batching - split chunks into batches
         print(f"    Processing {len(chunks)} chunks in batches...")
+        if self.verbose:
+            print(f"    Calculating batch sizes (context limit: {self._get_model_context_limit():,} tokens)...")
         context_limit = self._get_model_context_limit()
         base_tokens = self._count_tokens(base_prompt) + 100 + 8000  # base + system + response buffer
         max_chunk_tokens = context_limit - base_tokens
@@ -501,12 +548,17 @@ class Summarizer:
             batches.append(current_batch)
         
         print(f"    Split into {len(batches)} batches")
+        if self.verbose:
+            batch_sizes = [len(b) for b in batches]
+            print(f"    Batch sizes: {batch_sizes}")
         
         # Process each batch
         batch_results = []
         for i, batch in enumerate(batches):
+            if self.verbose:
+                print(f"    Processing batch {i+1}/{len(batches)} ({len(batch)} chunks)...")
             try:
-                chunk_texts = [f"[{format_ts(c['start'])}-{format_ts(c['end'])}] {c['text']}" for c in batch]
+                chunk_texts = [f"[{format_ts(c['start'])}]-[{format_ts(c['end'])}] {c['text']}" for c in batch]
                 # Handle both {chunks} placeholder and direct formatting
                 if "{chunks}" in base_prompt:
                     prompt = base_prompt.format(chunks=chr(10).join(chunk_texts))
@@ -539,13 +591,21 @@ class Summarizer:
                 
                 self._record_request(input_tokens, output_tokens)
                 
+                if self.verbose:
+                    print(f"      ✓ Batch {i+1} completed ({input_tokens:,} input, {output_tokens:,} output tokens)")
+                
                 batch_results.append(response.choices[0].message.content.strip())
             except Exception as e:
                 print(f"    Warning: Batch {i+1}/{len(batches)} failed: {e}")
                 batch_results.append(f"(Batch {i+1} processing failed)")
         
         # Merge results based on strategy
-        return self._merge_batch_results(batch_results, merge_strategy)
+        if self.verbose:
+            print(f"    Merging {len(batch_results)} batch results using '{merge_strategy}' strategy...")
+        merged_result = self._merge_batch_results(batch_results, merge_strategy)
+        if self.verbose:
+            print(f"    ✓ Merged result: {len(merged_result)} characters")
+        return merged_result
     
     def _merge_batch_results(self, batch_results: List[str], strategy: str) -> str:
         """
@@ -571,6 +631,8 @@ class Summarizer:
         elif strategy == "hierarchical":
             # Combine, then re-summarise to remove redundancy
             try:
+                if self.verbose:
+                    print(f"      Combining {len(batch_results)} batches, then re-summarizing...")
                 combined = "\n\n".join(batch_results)
                 
                 messages = [
@@ -597,6 +659,9 @@ class Summarizer:
                 
                 self._record_request(input_tokens, output_tokens)
                 
+                if self.verbose:
+                    print(f"      ✓ Hierarchical merge completed ({input_tokens:,} input, {output_tokens:,} output tokens)")
+                
                 return response.choices[0].message.content.strip()
             except Exception as e:
                 print(f"    Warning: Hierarchical merge failed: {e}, falling back to combine")
@@ -606,6 +671,8 @@ class Summarizer:
         elif strategy == "selective":
             # Keep only unique content using semantic similarity
             try:
+                if self.verbose:
+                    print(f"      Analyzing {len(batch_results)} batches for duplicate content...")
                 # Split each batch result into logical sections (paragraphs)
                 sections = []
                 for batch_idx, batch_result in enumerate(batch_results):
@@ -619,6 +686,8 @@ class Summarizer:
                 if len(sections) == 1:
                     return sections[0][2]
                 
+                if self.verbose:
+                    print(f"      Generating embeddings for {len(sections)} sections...")
                 # Generate embeddings for each section
                 embedder = Embedder(api_key=os.getenv("OPENAI_API_KEY"))
                 section_texts = [section[2] for section in sections]
@@ -634,6 +703,8 @@ class Summarizer:
                         # Use empty embedding as fallback
                         embeddings.append([])
                 
+                if self.verbose:
+                    print(f"      Filtering duplicates using cosine similarity (threshold: 0.85)...")
                 # Calculate cosine similarity and filter duplicates
                 unique_sections = []
                 unique_indices = []  # Track indices of kept sections for embedding comparison
@@ -657,6 +728,9 @@ class Summarizer:
                     if not is_duplicate:
                         unique_sections.append(section_text)
                         unique_indices.append(i)
+                
+                if self.verbose:
+                    print(f"      ✓ Kept {len(unique_sections)}/{len(sections)} unique sections")
                 
                 return "\n\n".join(unique_sections) if unique_sections else "\n\n".join(batch_results)
             except Exception as e:
@@ -690,87 +764,148 @@ class Summarizer:
             return 0.0
         
         return dot_product / (magnitude1 * magnitude2)
-
-    def _extract_topics(self, coarse_chunks: List[Dict[str, Any]]) -> List[str]:
-        """Pass 1: Extract main topics/themes from coarse chunks."""
+    
+    def extract_topics_streaming(
+        self,
+        coarse_chunks: List[Dict[str, Any]],
+        metadata: Dict[str, Any]
+    ) -> Tuple[List[str], List[int]]:
+        """
+        Streaming topic extraction:
+        - iterates chunks in order
+        - assigns each chunk to an existing topic or creates a new one
+        Returns (topics, chunk_to_topic_index)
+        """
         if not coarse_chunks:
-            return []
+            return [], []
 
-        base_prompt = TOPIC_EXTRACTION_BASE_PROMPT
+        topics: List[str] = []
+        chunk_to_topic: List[int] = []
 
-        # Try to include all chunks, but select within limit if needed
-        selected_chunks = self._select_chunks_within_limit(coarse_chunks, base_prompt)
-        
-        # If we had to limit chunks, note it (but still try to extract good topics)
-        if len(selected_chunks) < len(coarse_chunks):
-            print(f"    Note: Using {len(selected_chunks)}/{len(coarse_chunks)} chunks for topic extraction")
+        for i, chunk in enumerate(coarse_chunks):
+            start = format_ts(chunk["start"])
+            end = format_ts(chunk["end"])
+            text = chunk["text"]
 
-        try:
-            # Build chunk summaries for topic extraction
-            chunk_summaries = []
-            for chunk in selected_chunks:
-                # Use full text for better topic extraction (within token limits)
-                chunk_summaries.append(
-                    f"[{format_ts(chunk['start'])}-{format_ts(chunk['end'])}] {chunk['text']}"
-                )
-            
-            prompt = base_prompt.format(chunks=chr(10).join(chunk_summaries))
-            
+            topics_indexed = "\n".join([f"{idx}: {t}" for idx, t in enumerate(topics)]) or "(none yet)"
+
+            prompt = TOPIC_STREAM_PROMPT.format(
+                topics_indexed=topics_indexed,
+                start=start,
+                end=end,
+                text=text,
+                title=metadata.get("title"),
+            )
+
             messages = [
-                {"role": "system", "content": TOPIC_EXTRACTION_SYSTEM_MESSAGE},
+                {"role": "system", "content": TOPIC_STREAM_SYSTEM_MESSAGE},
                 {"role": "user", "content": prompt},
             ]
-            
-            # Rate limiting: estimate tokens and wait if needed
+
             estimated_tokens = self._count_message_tokens(messages)
             self._wait_if_needed(estimated_tokens)
-            
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                # temperature=0.3,
-            )
-            
-            # Record actual token usage
-            if hasattr(response, 'usage') and response.usage:
-                input_tokens = getattr(response.usage, 'prompt_tokens', estimated_tokens)
-                output_tokens = getattr(response.usage, 'completion_tokens', 0)
+
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=messages
+                )
+            except Exception as e:
+                # Fallback: if we can't call the API, assign to "Main Discussion"
+                if not topics:
+                    topics = ["Main Discussion"]
+                chunk_to_topic.append(0)
+                if self.verbose:
+                    print(f"    Warning: topic classify failed on chunk {i}: {e}")
+                continue
+
+            # usage accounting
+            if hasattr(response, "usage") and response.usage:
+                input_tokens = getattr(response.usage, "prompt_tokens", estimated_tokens)
+                output_tokens = getattr(response.usage, "completion_tokens", 0)
             else:
-                # Fallback to estimate if usage info not available
                 input_tokens = estimated_tokens
                 output_tokens = 0
-            
             self._record_request(input_tokens, output_tokens)
-            topics_json = response.choices[0].message.content.strip()
+
+            raw = response.choices[0].message.content or ""
+            raw = response.choices[0].message.content.strip()
             # Remove markdown code blocks if present
-            if topics_json.startswith("```"):
-                topics_json = topics_json.split("```")[1].split("\n", 1)[1] if "\n" in topics_json.split("```")[1] else topics_json.split("```")[2]
-            topics = json.loads(topics_json)
-            return topics if isinstance(topics, list) else []
-        except BadRequestError as e:
-            if "context_length_exceeded" in str(e).lower():
-                print(f"    Context limit exceeded, using batching for topic extraction...")
-                # Use batching if single request fails
-                result = self._summarize_with_batching(
-                    selected_chunks, base_prompt, 
-                    TOPIC_EXTRACTION_SYSTEM_MESSAGE,
-                    merge_strategy="selective",
-                    # temperature=0.3,
-                )
-                # Extract topics from batched result
-                try:
-                    topics_json = result.strip()
-                    if topics_json.startswith("```"):
-                        topics_json = topics_json.split("```")[1].split("\n", 1)[1] if "\n" in topics_json.split("```")[1] else topics_json.split("```")[2]
-                    topics = json.loads(topics_json)
-                    return topics if isinstance(topics, list) else []
-                except Exception:
-                    pass
-            print(f"    Warning: Topic extraction failed: {e}. Using fallback topics.")
-            return ["Main Discussion", "Key Points", "Examples", "Conclusion"]
-        except Exception as e:
-            print(f"    Warning: Topic extraction failed: {e}. Using fallback topics.")
-            return ["Main Discussion", "Key Points", "Examples", "Conclusion"]
+            if raw.startswith("```"):
+                raw = raw.split("```")[1].split("\n", 1)[1] if "\n" in raw.split("```")[1] else raw.split("```")[2]
+            if self.verbose:
+                print(f"    Topic classify response: {raw}")
+            try:
+                decision = json.loads(raw)
+            except Exception:
+                # If model returns malformed JSON, do a conservative fallback
+                if not topics:
+                    topics = ["Main Discussion"]
+                chunk_to_topic.append(0)
+                if self.verbose:
+                    print(f"    Warning: topic classify failed on chunk {i}: {raw}")
+                continue
+
+            action = decision.get("action")
+
+            if action == "assign":
+                idx = decision.get("topic_index")
+                if isinstance(idx, int) and 0 <= idx < len(topics):
+                    if self.verbose:
+                        print(f"    Assigning chunk {i} to topic {topics[idx]}")
+                    chunk_to_topic.append(idx)
+                elif idx == -1:
+                    if self.verbose:
+                        print(f"    Chunk is not relevant to any topic")
+                        chunk_to_topic.append(-1)
+                    if self.verbose:
+                        print(f"    Assigning chunk {i} to topic -1")
+                    # if self.verbose:
+                    #     print(f"    Assigning chunk {i} to topic -1 (no topic)")
+                    # if not topics:
+                    #     topics = ["Irrelevant discussion"]
+                    # elif not "Irrelevant discussion" in topics:
+                    #     topics.append("Irrelevant discussion")
+                    #     chunk_to_topic.append(len(topics) - 1)
+                    # else:
+                    #     chunk_to_topic.append(topics.index("Irrelevant discussion"))
+                    # if self.verbose:
+                    #     print(f"    Assigning chunk {i} to topic {topics[chunk_to_topic[-1]]}")
+                else:
+                    # invalid index => fallback assign to first topic or create
+                    if topics:
+                        if self.verbose:
+                            print(f"    Assigning chunk {i} to first topic")
+                        chunk_to_topic.append(0)
+                    else:
+                        if self.verbose:
+                            print(f"   FALLBACK: Assigning chunk {i} to first topic")
+                        topics = ["Main Discussion"]
+                        chunk_to_topic.append(0)
+
+            elif action == "create":
+                name = decision.get("topic_name", "")
+                topics.append(name.strip())
+                chunk_to_topic.append(len(topics) - 1)
+                if self.verbose:
+                    print(f"    Created new topic: {name}")
+
+            else:
+                # unknown action => fallback
+                if self.verbose:
+                    print(f"   FALLBACK: Unknown action: {action}")
+                if not topics:
+                    topics = ["Main Discussion"]
+                chunk_to_topic.append(0)
+
+        # If you ended with >max_topics due to any edge cases, you can merge later.
+        # If <min_topics, that's allowed by your earlier constraints ("fewer if insufficient content").
+        return topics, chunk_to_topic
+
+    def _extract_topics(self, coarse_chunks: List[Dict[str, Any]], metadata: Dict[str, Any]) -> Tuple[List[str], List[int]]:
+        """Pass 1: Extract main topics/themes from coarse chunks."""
+        topics, chunk_to_topic = self.extract_topics_streaming(coarse_chunks, metadata)
+        return topics, chunk_to_topic
 
     def _build_header(self, metadata: Dict[str, Any]) -> str:
         """Build header section with title, channel, URL, duration, and usage instructions."""
@@ -789,8 +924,6 @@ This summary is structured to help you quickly find what you need:
 - **Topic Map**: Table of contents with segment boundaries
 - **Deep Dive**: Detailed notes organised by topic with full context
 - **Frameworks**: Actionable checklists and step-by-step methods
-- **Quotes**: Memorable short excerpts
-- **Listening Paths**: Curated sections for different time constraints
 
 All timestamps are clickable in supported markdown viewers and reference exact moments in the video."""
 
@@ -809,11 +942,16 @@ All timestamps are clickable in supported markdown viewers and reference exact m
         
         # If we can't fit all chunks, note it (but process what we can)
         if len(selected_chunks) < len(coarse_chunks):
-            print(f"    Note: Processing {len(selected_chunks)}/{len(coarse_chunks)} chunks for executive synopsis")
+            if self.verbose:
+                print(f"    Note: Token limit reached, processing {len(selected_chunks)}/{len(coarse_chunks)} chunks for executive synopsis")
+            else:
+                print(f"    Note: Processing {len(selected_chunks)}/{len(coarse_chunks)} chunks for executive synopsis")
 
         try:
             # Try single request first
             if self._can_fit_in_single_request(selected_chunks, base_prompt):
+                if self.verbose:
+                    print(f"    Generating synopsis from {len(selected_chunks)} chunks in single request...")
                 chunk_texts = [f"[{format_ts(c['start'])}] {c['text']}" for c in selected_chunks]
                 prompt = base_prompt.format(chunks=chr(10).join(chunk_texts))
                 
@@ -842,6 +980,8 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                     output_tokens = 0
                 
                 self._record_request(input_tokens, output_tokens)
+                if self.verbose:
+                    print(f"    ✓ Synopsis generated ({input_tokens:,} input, {output_tokens:,} output tokens)")
                 synopsis = response.choices[0].message.content.strip()
             else:
                 # Use batching
@@ -887,37 +1027,47 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                 bullets.append(f"- [{format_ts(chunk['start'])}] {chunk['text'][:100]}...")
             return f"## Executive Synopsis\n\n{chr(10).join(bullets)}"
 
-    def _build_topic_map(self, coarse_chunks: List[Dict[str, Any]], topics: List[str]) -> str:
+    def _build_topic_map(self, coarse_chunks: List[Dict[str, Any]], topics: List[str], chunk_to_topic: List[int]) -> str:
         """Build topic map table with Start-End, Topic label, Why it matters, Listen if..."""
-        if not coarse_chunks or not topics:
+        if not coarse_chunks or not topics or not chunk_to_topic:
             return "## Topic Map / Outline\n\n(No content available)"
 
-        # Map chunks to topics (simplified - assign chunks to nearest topics)
-        # For production, this could be more sophisticated with semantic matching
         chunk_groups = {}
-        chunks_per_topic = len(coarse_chunks) // max(1, len(topics))
 
         for i, topic in enumerate(topics):
-            start_idx = i * chunks_per_topic
-            end_idx = min((i + 1) * chunks_per_topic, len(coarse_chunks))
-            if start_idx < len(coarse_chunks):
-                chunk_groups[topic] = coarse_chunks[start_idx:end_idx]
+            topic_chunks = []
+            for j, chunk in enumerate(coarse_chunks):
+                if chunk_to_topic[j] == i:
+                    topic_chunks.append(chunk)
+            chunk_groups[topic] = topic_chunks
 
         # Build table
-        table_rows = ["| Start | End | Topic | Why it matters | Listen if you care about... |"]
-        table_rows.append("|-------|-----|------|----------------|----------------------------|")
+        table_rows = ["| Timecodes | Topic |"]
+        table_rows.append("|----------|-------|")
 
         for topic, chunks in chunk_groups.items():
             if not chunks:
                 continue
-            start_chunk = chunks[0]
-            end_chunk = chunks[-1]
-            start_ts = format_ts(start_chunk["start"])
-            end_ts = format_ts(end_chunk["end"])
-
-            # Generate description
-            chunk_text = " ".join(c["text"][:150] for c in chunks[:3])
-            table_rows.append(f"| {start_ts} | {end_ts} | {topic} | Key discussion point | Relevant content |")
+            topic_start_timestamps = []
+            topic_start_timestamps.append(format_ts(chunks[0]["start"]))
+            topic_end_timestamps = []
+            i = 1
+            while i < len(chunks):
+                if chunks[i]["start"] > chunks[i-1]["end"] + 5: # 5 seconds of overlap
+                    topic_end_timestamps.append(format_ts(chunks[i-1]["end"]))
+                    topic_start_timestamps.append(format_ts(chunks[i]["start"]))
+                i += 1
+            topic_end_timestamps.append(format_ts(chunks[-1]["end"]))
+            if len(topic_start_timestamps) != len(topic_end_timestamps):
+                print(f"    Warning: Topic {topic} has different number of start and end timestamps")
+                continue
+            else: 
+                timecode_strings = []
+                for j in range(len(topic_start_timestamps)):
+                    timecode_string = f"[{topic_start_timestamps[j]}]"
+                    timecode_strings.append(timecode_string)
+                timecode_string = ", ".join(timecode_strings)
+                table_rows.append(f"| {timecode_string} | {topic} |")
 
         return f"## Topic Map / Outline\n\n{chr(10).join(table_rows)}"
 
@@ -925,6 +1075,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
         self,
         topics: List[str],
         coarse_chunks: List[Dict[str, Any]],
+        chunk_to_topic: List[int],
         fine_chunks: List[Dict[str, Any]],
         raw_segments: List[Dict[str, Any]],
     ) -> str:
@@ -935,38 +1086,44 @@ All timestamps are clickable in supported markdown viewers and reference exact m
         sections = ["## Deep Dive Notes\n"]
 
         # Process each topic
-        chunks_per_topic = len(coarse_chunks) // max(1, len(topics))
+        chunk_groups = {}  # chunk groups contain coarse chunks
+
+        for i, topic in enumerate(topics):
+            topic_chunks = []
+            for j, chunk in enumerate(coarse_chunks):
+                if chunk_to_topic[j] == i:
+                    topic_chunks.append(chunk)
+            chunk_groups[topic] = topic_chunks
 
         for topic_idx, topic in enumerate(topics):
-            start_idx = topic_idx * chunks_per_topic
-            end_idx = min((topic_idx + 1) * chunks_per_topic, len(coarse_chunks))
-            topic_chunks = coarse_chunks[start_idx:end_idx] if start_idx < len(coarse_chunks) else []
-
+            topic_chunks = chunk_groups[topic]
             if not topic_chunks:
                 continue
 
             # Get related fine chunks for detail
-            topic_start_time = topic_chunks[0]["start"]
-            topic_end_time = topic_chunks[-1]["end"]
-
-            related_fine_chunks = [
-                c for c in fine_chunks if topic_start_time <= c["start"] <= topic_end_time
-            ]
+            # For each coarse chunk in topic_chunks, get fine chunks that start within the chunk's time range
+            related_fine_chunks = []
+            for coarse_chunk in topic_chunks:
+                for fine_chunk in fine_chunks:
+                    if coarse_chunk["start"] <= fine_chunk["start"] <= coarse_chunk["end"]:
+                        related_fine_chunks.append(fine_chunk)
 
             # Select chunks within token limit for this topic
             base_prompt_template = DEEP_DIVE_BASE_PROMPT_TEMPLATE
             base_prompt = base_prompt_template.format(topic=topic, chunks="{chunks}")
 
             # Select chunks within token limit
-            selected_topic_chunks = self._select_chunks_within_limit(topic_chunks, base_prompt)
+            # selected_topic_chunks = self._select_chunks_within_limit(topic_chunks, base_prompt)
             system_message = DEEP_DIVE_SYSTEM_MESSAGE
 
             try:
                 # Try single request first
-                if self._can_fit_in_single_request(selected_topic_chunks, base_prompt):
+                if self._can_fit_in_single_request(related_fine_chunks, base_prompt):
+                    if self.verbose:
+                        print(f"      Processing topic '{topic}' with {len(related_fine_chunks)} chunks...")
                     chunk_content = "\n\n".join(
-                        f"[{format_ts(c['start'])}-{format_ts(c['end'])}] {c['text']}"
-                        for c in selected_topic_chunks
+                        f"[{format_ts(c['start'])}[-[{format_ts(c['end'])}] {c['text']}"
+                        for c in related_fine_chunks
                     )
                     # base_prompt already has {topic} filled, now fill {chunks}
                     prompt = base_prompt.format(chunks=chunk_content)
@@ -996,11 +1153,13 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                         output_tokens = 0
                     
                     self._record_request(input_tokens, output_tokens)
+                    if self.verbose:
+                        print(f"      ✓ Topic '{topic}' completed ({input_tokens:,} input, {output_tokens:,} output tokens)")
                     topic_section = response.choices[0].message.content.strip()
                 else:
                     # Use batching if needed
                     topic_section = self._summarize_with_batching(
-                        selected_topic_chunks, 
+                        topic_chunks, 
                         base_prompt, 
                         system_message,
                         merge_strategy="selective", 
@@ -1015,7 +1174,7 @@ All timestamps are clickable in supported markdown viewers and reference exact m
                     print(f"    Context limit exceeded for topic '{topic}', retrying with batching...")
                     try:
                         topic_section = self._summarize_with_batching(
-                            selected_topic_chunks, 
+                            topic_chunks, 
                             base_prompt, 
                             system_message,
                             merge_strategy="selective", 
@@ -1109,6 +1268,14 @@ All timestamps are clickable in supported markdown viewers and reference exact m
         if not framework_chunks:
             return "## Actionable Frameworks / Checklists\n\n(No frameworks found in transcript)"
 
+        # Get related fine chunks for framework chunks
+        related_fine_chunks = []
+        for chunk in framework_chunks:
+            for fine_chunk in fine_chunks:
+                if chunk["start"] <= fine_chunk["start"] <= chunk["end"]:
+                    related_fine_chunks.append(fine_chunk)
+        
+
         base_prompt = FRAMEWORK_EXTRACTION_BASE_PROMPT
         system_message = FRAMEWORK_EXTRACTION_SYSTEM_MESSAGE
 
@@ -1117,39 +1284,43 @@ All timestamps are clickable in supported markdown viewers and reference exact m
 
         try:
             # Try single request first
-            if self._can_fit_in_single_request(selected_framework_chunks, base_prompt):
-                chunk_texts = "\n\n".join(
-                    f"[{format_ts(c['start'])}-{format_ts(c['end'])}] {c['text']}" 
-                    for c in selected_framework_chunks
-                )
-                prompt = base_prompt.format(chunks=chunk_texts)
-                
-                messages = [
-                    {"role": "system", "content": system_message},
-                    {"role": "user", "content": prompt},
-                ]
-                
-                # Rate limiting: estimate tokens and wait if needed
-                estimated_tokens = self._count_message_tokens(messages)
-                self._wait_if_needed(estimated_tokens)
-                
-                response = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=messages,
-                    # temperature=0.3,
-                )
-                
-                # Record actual token usage
-                if hasattr(response, 'usage') and response.usage:
-                    input_tokens = getattr(response.usage, 'prompt_tokens', estimated_tokens)
-                    output_tokens = getattr(response.usage, 'completion_tokens', 0)
-                else:
-                    # Fallback to estimate if usage info not available
-                    input_tokens = estimated_tokens
-                    output_tokens = 0
-                
-                self._record_request(input_tokens, output_tokens)
-                frameworks = response.choices[0].message.content.strip()
+            if self._can_fit_in_single_request(related_fine_chunks, base_prompt):
+                    if self.verbose:
+                        print(f"    Extracting frameworks from {len(related_fine_chunks)} candidate chunks...")
+                    chunk_texts = "\n\n".join(
+                        f"[{format_ts(c['start'])}]-[{format_ts(c['end'])}] {c['text']}" 
+                        for c in related_fine_chunks
+                    )
+                    prompt = base_prompt.format(chunks=chunk_texts)
+                    
+                    messages = [
+                        {"role": "system", "content": system_message},
+                        {"role": "user", "content": prompt},
+                    ]
+                    
+                    # Rate limiting: estimate tokens and wait if needed
+                    estimated_tokens = self._count_message_tokens(messages)
+                    self._wait_if_needed(estimated_tokens)
+                    
+                    response = self.client.chat.completions.create(
+                        model=self.model,
+                        messages=messages,
+                        # temperature=0.3,
+                    )
+                    
+                    # Record actual token usage
+                    if hasattr(response, 'usage') and response.usage:
+                        input_tokens = getattr(response.usage, 'prompt_tokens', estimated_tokens)
+                        output_tokens = getattr(response.usage, 'completion_tokens', 0)
+                    else:
+                        # Fallback to estimate if usage info not available
+                        input_tokens = estimated_tokens
+                        output_tokens = 0
+                    
+                    self._record_request(input_tokens, output_tokens)
+                    if self.verbose:
+                        print(f"    ✓ Framework extraction completed ({input_tokens:,} input, {output_tokens:,} output tokens)")
+                    frameworks = response.choices[0].message.content.strip()
             else:
                 # Use batching if needed
                 frameworks = self._summarize_with_batching(

@@ -60,19 +60,11 @@ During the chat session:
 - Use `/help` to see available commands
 - Use `/exit` or `/quit` to exit the chat
 
-## Development
+Use -v for verbose output
 
-Install development dependencies:
+## Example Summary
 
-```bash
-pip install -r requirements-dev.txt
-```
-
-Run tests:
-
-```bash
-pytest
-```
+Check out example_summary.md for an example of the summary output.
 
 ## Project Structure
 
@@ -98,7 +90,7 @@ pod2chat/
 ```
 TODO: 
  - Fix summariser deep dive
-    1. Get topics - sliding window technique where a topic for the first window, slide through chunks until topic change. Mark chunks under a respective topic 
+    1. Get topics - sliding window technique where a topic for the first window, slide through chunks until topic change. Mark chunks under a respective topic DONE
     2. Build ex synopsis
-    3. For each topic, extract actionable insights that should be applied in a professional capacity. THings that should be remembered that would make the reader more productive, or have a higher quality output??
-    4. 
+    3. For each topic, extract actionable insights that should be applied in a professional capacity. THings that should be remembered that would make the reader more productive, or have a higher quality output?? DONE
+
